@@ -78,13 +78,13 @@ func update_input():
 	var cam_xform = Camera3D.get_global_transform()
 	var input_dir = Vector2()
 	# desired move in camera direction
-	if Input.is_action_pressed("move_forward"):
+	if Input.is_physical_key_pressed(KEY_W):
 		input_dir.y += 1
-	if Input.is_action_pressed("move_backward"):
+	if Input.is_physical_key_pressed(KEY_S):
 		input_dir.y -= 1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_physical_key_pressed(KEY_A):
 		input_dir.x -= 1
-	if Input.is_action_pressed("move_right"):
+	if Input.is_physical_key_pressed(KEY_D):
 		input_dir.x += 1
 	input_dir = input_dir.normalized()
 	# Basis vectors are already normalized.
@@ -108,7 +108,7 @@ func _process(delta):
 		# collider will be the node you hit
 		var body = hit.collider
 		if body is RigidBody:
-			if Input.is_action_just_pressed("item_use"):
+			if Input.is_mouse_button_pressed(BUTTON_LEFT):
 				picked_obj = body
 				picked_pos = picked_obj.global_transform.origin
 				
@@ -129,14 +129,13 @@ func _process(delta):
 					
 					body.detach_shape(ons[hit.shape], Vector3.ZERO); # VITAL INFORMATION: BakedFracture graph nodes cannot be indexed by shape_id but instead indirected through the body's shape owners array.
 					body.propagate(true)
+			else:
+				picked_obj = null
+				picked_pos = null
+				Marker.visible = false
 				
 		Marker.global_transform.origin = Ray.get_collision_point()
-		
-	
-	if Input.is_action_just_released("item_use"):
-		picked_obj = null
-		picked_pos = null
-		Marker.visible = false
+
 	
 	if picked_obj and Input.is_mouse_button_pressed(BUTTON_LEFT):
 		Marker.visible = true

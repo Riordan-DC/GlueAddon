@@ -24,3 +24,12 @@ Downloading this repo and copy the ```addons/glue``` folder into your Godot 3.x 
 
 ### Building
 This addon comes with libraries for windows using the Godot 3.x master branch API. If you need to build your own follow the guide found inside the ```glue/``` directory.
+
+### Testing
+I've added the glue_test.tscn to the scenes/ folder. I used this scene to make the YT vid, plus a massive wall which shows the current limits of the system.
+<br>The controls are:
+<br>W,A,S,D = fly around
+<br>Left mouse button = Detach shape from body
+<br>Right mouse button = Launch grenade
+<br>R = Restart scene
+<br>Enter = Toggle slow motion
