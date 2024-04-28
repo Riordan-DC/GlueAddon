@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="PhysicsMaterial" id=170]
+
+[sub_resource type="BoxShape" id=168]
+extents = Vector3( 0.251932, 0.254952, 0.33 )
+
+[sub_resource type="CubeMesh" id=169]
+size = Vector3( 0.493, 0.515, 0.643 )
+
+[node name="bullet" type="RigidBody"]
+mode = 3
+mass = 100.0
+physics_material_override = SubResource( 170 )
+continuous_cd = true
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 168 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000898361, 1.57356e-05, -5.96046e-08 )
+mesh = SubResource( 169 )
+material/0 = null

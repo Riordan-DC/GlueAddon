@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://addons/glue/props/wall_big.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/glue/scenes/DebugCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/glue/props/interior_wall.tscn" type="PackedScene" id=8]
+
+[sub_resource type="CubeMesh" id=155]
+size = Vector3( 110, 0.25, 110 )
+
+[sub_resource type="BoxShape" id=160]
+extents = Vector3( 55, 0.125, 55 )
+
+[sub_resource type="Gradient" id=256]
+colors = PoolColorArray( 0, 0, 0, 1, 0.972168, 0.151901, 0.151901, 1 )
+
+[sub_resource type="GradientTexture" id=257]
+gradient = SubResource( 256 )
+
+[sub_resource type="ProceduralSky" id=164]
+sky_top_color = Color( 0.82, 0.925, 1, 1 )
+sky_horizon_color = Color( 0.776471, 0.768627, 0.647059, 1 )
+ground_bottom_color = Color( 0.345098, 0.345098, 0.345098, 1 )
+ground_horizon_color = Color( 0.345098, 0.345098, 0.345098, 1 )
+sun_color = Color( 1, 0.937255, 0.443137, 1 )
+sun_curve = 0.00717937
+sun_energy = 5.0
+texture_size = 3
+
+[sub_resource type="Environment" id=162]
+background_mode = 1
+background_sky = SubResource( 164 )
+background_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+ambient_light_color = Color( 0.321569, 0.301961, 0.180392, 1 )
+ambient_light_energy = 0.1
+fog_enabled = true
+fog_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+fog_depth_begin = 10.3
+fog_depth_end = 64.5
+fog_depth_curve = 0.615573
+fog_transmit_enabled = true
+tonemap_mode = 3
+ss_reflections_enabled = true
+ssao_intensity2 = 0.5
+ssao_color = Color( 0.529412, 0, 1, 1 )
+ssao_quality = 0
+ssao_blur = 2
+ssao_edge_sharpness = 0.0
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/7 = true
+glow_bloom = 0.05
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_color_correction = SubResource( 257 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="DebugCamera" parent="." instance=ExtResource( 3 )]
+
+[node name="GROUND" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98916, -0.7, 0 )
+mesh = SubResource( 155 )
+skeleton = NodePath("")
+
+[node name="StaticBody" type="StaticBody" parent="GROUND"]
+
+[node name="CollisionShape" type="CollisionShape" parent="GROUND/StaticBody"]
+shape = SubResource( 160 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.713303, 0.386039, -0.584955, -0.115196, 0.887857, 0.445466, 0.691324, -0.250368, 0.677781, -11.8183, 5.4451, 5.56559 )
+visible = false
+spot_range = 15.9064
+spot_angle = 44.4398
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 162 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.683274, 0.572318, -0.453419, 0, 0.620984, 0.783824, 0.730162, -0.535566, 0.424302, 0, 14.4675, 0 )
+light_energy = 0.3
+light_specular = 0.0
+light_bake_mode = 0
+shadow_enabled = true
+shadow_color = Color( 0.803922, 0.803922, 0.803922, 1 )
+directional_shadow_mode = 0
+directional_shadow_split_2 = 0.258
+directional_shadow_normal_bias = 0.0
+directional_shadow_max_distance = 20.0
+
+[node name="Spatial" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0395, -0.572407, -1.38979 )
+
+[node name="Spatial2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.64, -0.57, -1.39 )
+
+[node name="Spatial3" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44, -0.57, -1.39 )
+
+[node name="Spatial4" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.83, -0.57, -1.39 )
+
+[node name="Spatial13" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.04, -0.57, 8.15 )
+
+[node name="Spatial14" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.64, -0.57, 8.15 )
+
+[node name="Spatial15" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.44, -0.57, 8.15 )
+
+[node name="Spatial16" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.83, -0.57, 8.15 )
+
+[node name="Spatial5" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.075, -0.57, 4.555 )
+
+[node name="Spatial6" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.075, -0.57, 6.955 )
+
+[node name="Spatial7" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.075, -0.57, 2.155 )
+
+[node name="Spatial8" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.075, -0.57, -0.235 )
+
+[node name="Spatial9" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.445, -0.57, 4.555 )
+
+[node name="Spatial10" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.445, -0.57, 6.955 )
+
+[node name="Spatial11" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.445, -0.57, 2.155 )
+
+[node name="Spatial12" parent="." instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.445, -0.57, -0.235 )
+
+[node name="wall_big" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00618, -0.574893, 3.2743 )

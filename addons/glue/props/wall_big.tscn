@@ -1,0 +1,1708 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/glue/gdnative/bakedfracture_class.gdns" type="Script" id=1]
+[ext_resource path="res://addons/glue/graphs/wall_big.tres" type="Resource" id=2]
+
+[sub_resource type="BoxShape" id=176]
+extents = Vector3( 0.25, 0.15, 0.1 )
+
+[sub_resource type="CubeMesh" id=177]
+size = Vector3( 0.5, 0.301, 0.2 )
+
+[node name="wall_big" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0911, -0.424911, -30.708 )
+mass = 100.0
+contacts_reported = 16
+contact_monitor = true
+sleeping = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+angular_damp = 1e-07
+script = ExtResource( 1 )
+glue_strength = 1000.0
+anchor_enabled = true
+anchor_static = true
+_graph = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape2"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape3"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape4"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape5"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape6"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape7"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape8"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape9"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape10"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape11"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape12"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape13"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape14"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape15"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape16"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape17"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape18"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape19" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape19"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape20" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799999, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape20"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape21" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape21"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape22" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape22"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape23" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape23"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape24" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape24"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape25" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999999, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape25"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape26" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape26"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape27" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape27"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape28" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape28"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape29" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape29"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape30" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799999, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape30"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape31" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape31"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape32" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape32"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape33" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape33"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape34" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape34"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape35" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999999, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape35"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape36" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape36"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape37" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape37"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape38" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape38"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape39" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -1.66893e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape39"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape40" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape40"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape41" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0.3, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape41"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape42" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 0.3, -7.15256e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape42"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape43" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.3, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape43"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape44" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 0.3, -1.66893e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape44"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape45" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.3, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape45"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape46" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.6, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape46"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape47" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.6, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape47"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape48" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.6, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape48"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape49" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.6, -1.66893e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape49"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape50" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.6, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape50"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape51" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0.9, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape51"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape52" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 0.9, -7.15256e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape52"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape53" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.9, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape53"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape54" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 0.9, -1.66893e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape54"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape55" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0.9, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape55"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape56" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.2, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape56"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape57" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.2, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape57"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape58" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.2, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape58"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape59" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.2, -1.66893e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape59"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape60" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.2, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape60"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape61" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 1.5, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape61"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape62" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 1.5, -7.15256e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape62"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape63" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.5, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape63"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape64" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 1.5, -1.66893e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape64"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape65" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 1.5, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape65"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape66" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.8, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape66"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape67" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.8, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape67"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape68" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.8, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape68"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape69" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.8, -1.66893e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape69"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape70" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.8, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape70"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape71" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape71"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape72" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7.15256e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape72"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape73" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape73"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape74" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -2.14577e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape74"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape75" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape75"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape76" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 0.3, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape76"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape77" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.3, -1.19209e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape77"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape78" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0.3, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape78"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape79" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.3, -1.43051e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape79"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape80" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 0.3, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape80"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape81" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.6, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape81"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape82" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.6, -7.15256e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape82"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape83" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.6, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape83"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape84" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.6, -2.14577e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape84"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape85" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.6, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape85"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape86" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 0.9, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape86"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape87" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.9, -1.19209e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape87"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape88" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0.9, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape88"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape89" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0.9, -1.43051e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape89"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape90" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 0.9, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape90"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape91" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.2, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape91"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape92" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.2, -7.15256e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape92"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape93" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.2, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape93"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape94" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.2, -2.14577e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape94"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape95" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.2, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape95"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape96" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 1.5, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape96"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape97" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1.5, -1.19209e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape97"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape98" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1.5, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape98"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape99" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1.5, -1.43051e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape99"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape100" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 1.5, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape100"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape101" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.8, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape101"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape102" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.8, -7.15256e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape102"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape103" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.8, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape103"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape104" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.8, -2.14577e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape104"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape105" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.8, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape105"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape106" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 2.10082, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape106"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape107" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 2.10082, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape107"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape108" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 2.10082, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape108"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape109" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 2.10082, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape109"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape110" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799999, 2.10082, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape110"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape111" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 2.10082, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape111"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape112" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 2.10082, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape112"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape113" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 2.10082, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape113"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape114" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 2.10082, -1.66893e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape114"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape115" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 2.10082, -2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape115"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape116" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 2.10082, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape116"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape117" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 2.10082, -7.15256e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape117"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape118" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 2.10082, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape118"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape119" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 2.10082, -2.14577e-06 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape119"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape120" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 2.10082, 2.38419e-07 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape120"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape121" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00890064, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape121"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape122" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.508901, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape122"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape123" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491099, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape123"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape124" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0089, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape124"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape125" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.991099, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape125"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape126" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2089, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape126"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape127" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7089, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape127"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape128" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2911, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape128"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape129" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2089, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape129"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape130" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7911, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape130"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape131" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00890064, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape131"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape132" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.508901, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape132"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape133" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491099, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape133"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape134" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0089, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape134"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape135" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.991099, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape135"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape136" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2089, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape136"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape137" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7089, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape137"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape138" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2911, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape138"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape139" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2089, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape139"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape140" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7911, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape140"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape141" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00890064, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape141"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape142" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.508901, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape142"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape143" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491099, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape143"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape144" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0089, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape144"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape145" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.991099, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape145"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape146" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2089, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape146"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape147" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7089, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape147"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape148" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2911, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape148"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape149" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2089, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape149"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape150" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7911, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape150"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape151" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00890064, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape151"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape152" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.508901, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape152"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape153" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491099, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape153"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape154" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0089, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape154"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape155" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.991099, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape155"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape156" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5089, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape156"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape157" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0089, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape157"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape158" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0089, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape158"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape159" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5089, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape159"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape160" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5089, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape160"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape161" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7089, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape161"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape162" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2089, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape162"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape163" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2089, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape163"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape164" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7089, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape164"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape165" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7089, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape165"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape166" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5089, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape166"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape167" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0089, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape167"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape168" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0089, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape168"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape169" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5089, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape169"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape170" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5089, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape170"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape171" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7089, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape171"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape172" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2089, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape172"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape173" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2089, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape173"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape174" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7089, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape174"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape175" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7089, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape175"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape176" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5089, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape176"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape177" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0089, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape177"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape178" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0089, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape178"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape179" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5089, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape179"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape180" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5089, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape180"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape181" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7089, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape181"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape182" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2089, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape182"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape183" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2089, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape183"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape184" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7089, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape184"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape185" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7089, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape185"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape186" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5089, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape186"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape187" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0089, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape187"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape188" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0089, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape188"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape189" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5089, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape189"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape190" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5089, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape190"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape191" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4911, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape191"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape192" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9911, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape192"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape193" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9911, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape193"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape194" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4911, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape194"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape195" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4911, 2.40075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape195"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape196" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2911, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape196"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape197" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7911, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape197"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape198" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7911, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape198"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape199" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2911, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape199"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape200" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2911, 2.70075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape200"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape201" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4911, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape201"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape202" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9911, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape202"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape203" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9911, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape203"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape204" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4911, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape204"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape205" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4911, 3.00075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape205"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape206" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2911, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape206"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape207" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7911, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape207"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape208" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7911, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape208"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape209" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2911, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape209"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape210" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2911, 3.30075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape210"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape211" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4911, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape211"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape212" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9911, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape212"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape213" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9911, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape213"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape214" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4911, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape214"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape215" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4911, 3.60075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape215"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape216" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2911, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape216"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape217" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7911, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape217"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape218" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7911, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape218"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape219" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2911, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape219"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape220" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2911, 3.90075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape220"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape221" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4911, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape221"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape222" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9911, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape222"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape223" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9911, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape223"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape224" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4911, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape224"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape225" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4911, 4.20075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape225"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape226" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2089, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape226"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape227" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7089, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape227"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape228" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2911, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape228"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape229" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2089, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape229"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape230" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7911, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape230"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape231" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7089, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape231"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape232" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2089, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape232"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape233" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2089, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape233"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape234" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7089, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape234"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape235" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7089, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape235"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape236" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2911, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape236"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape237" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7911, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape237"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape238" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7911, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape238"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape239" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2911, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape239"]
+mesh = SubResource( 177 )
+
+[node name="CollisionShape240" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2911, 4.50075, 3.43323e-05 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape240"]
+mesh = SubResource( 177 )

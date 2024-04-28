@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/register_types.obj-7746f5182cccaa051a49345313794693.mesh"
+
+[deps]
+
+files=[ "res://.import/register_types.obj-7746f5182cccaa051a49345313794693.mesh" ]
+
+source_file="res://addons/glue/gdnative/src/register_types.obj"
+dest_files=[ "res://.import/register_types.obj-7746f5182cccaa051a49345313794693.mesh", "res://.import/register_types.obj-7746f5182cccaa051a49345313794693.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

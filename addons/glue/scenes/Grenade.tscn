@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/glue/scenes/Grenade.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=338]
+radius = 0.05
+
+[sub_resource type="SphereMesh" id=339]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="SpatialMaterial" id=341]
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color( 0, 0.462745, 1, 1 )
+emission_energy = 3.0
+emission_operator = 0
+emission_on_uv2 = false
+rim_enabled = true
+rim = 0.17
+rim_tint = 0.45
+
+[sub_resource type="SphereShape" id=340]
+radius = 2.0
+
+[node name="Grenade" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87, 2.5, -0.83 )
+collision_mask = 167
+script = ExtResource( 1 )
+active = true
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 338 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 339 )
+material/0 = SubResource( 341 )
+
+[node name="Area" type="Area" parent="."]
+collision_mask = 175
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 340 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+light_color = Color( 0, 0.309804, 1, 1 )
+light_energy = 0.3
+light_specular = 0.0
+omni_range = 2.02

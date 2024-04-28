@@ -1,0 +1,18 @@
+[general]
+
+singleton=false
+load_once=true
+symbol_prefix="glue_"
+reloadable=false
+
+[entry]
+
+OSX.64="res://addons/glue/gdnative/osx/libggraph.dylib"
+Windows.64="res://addons/glue/gdnative/win64/ggraph.dll"
+iOS.arm64="res://addons/glue/gdnative/ios/libggraph.a"
+
+[dependencies]
+
+OSX.64=[  ]
+Windows.64=[  ]
+iOS.arm64=[ "res://addons/glue/gdnative/ios/libgodot-cpp.ios.release.arm64.a" ]

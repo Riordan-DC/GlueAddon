@@ -1,0 +1,802 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/glue/scripts/BakedFracture.gd" type="Script" id=1]
+[ext_resource path="res://addons/glue/scripts/GlueGraphResource.gd" type="Script" id=2]
+
+[sub_resource type="Resource" id=180]
+script = ExtResource( 2 )
+_nodes = {
+0: {
+"anchor": true,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0, 0, -6.20882e-10 )
+},
+1: {
+"anchor": true,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.5, 0, -6.20882e-10 )
+},
+2: {
+"anchor": true,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.5, 0, -6.20882e-10 )
+},
+3: {
+"anchor": true,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -1, 0, -6.20882e-10 )
+},
+4: {
+"anchor": true,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 1, 0, -6.20882e-10 )
+},
+5: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.2, 0.3, -6.20882e-10 )
+},
+6: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.7, 0.3, -6.20882e-10 )
+},
+7: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.3, 0.3, -6.20882e-10 )
+},
+8: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -1.2, 0.3, -6.20882e-10 )
+},
+9: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.8, 0.3, -6.20882e-10 )
+},
+10: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0, 0.6, -6.20882e-10 )
+},
+11: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.5, 0.6, -6.20882e-10 )
+},
+12: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.5, 0.6, -6.20882e-10 )
+},
+13: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -1, 0.6, -6.20882e-10 )
+},
+14: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 1, 0.6, -6.20882e-10 )
+},
+15: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.2, 0.9, -6.20882e-10 )
+},
+16: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.7, 0.9, -6.20882e-10 )
+},
+17: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.3, 0.9, -6.20882e-10 )
+},
+18: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -1.2, 0.9, -6.20882e-10 )
+},
+19: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.799999, 0.9, -6.20882e-10 )
+},
+20: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0, 1.2, -6.20882e-10 )
+},
+21: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.5, 1.2, -6.20882e-10 )
+},
+22: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.5, 1.2, -6.20882e-10 )
+},
+23: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -1, 1.2, -6.20882e-10 )
+},
+24: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.999999, 1.2, -6.20882e-10 )
+},
+25: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.2, 1.5, -6.20882e-10 )
+},
+26: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.7, 1.5, -6.20882e-10 )
+},
+27: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.3, 1.5, -6.20882e-10 )
+},
+28: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -1.2, 1.5, -6.20882e-10 )
+},
+29: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.799999, 1.5, -6.20882e-10 )
+},
+30: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0, 1.8, -6.20882e-10 )
+},
+31: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -0.5, 1.8, -6.20882e-10 )
+},
+32: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.5, 1.8, -6.20882e-10 )
+},
+33: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( -1, 1.8, -6.20882e-10 )
+},
+34: {
+"anchor": false,
+"bond": 10.0,
+"force": Vector3( 0, 0, 0 ),
+"group": 0,
+"position": Vector3( 0.999999, 1.8, -6.20882e-10 )
+}
+}
+_edges = [ {
+"a": 0,
+"b": 5
+}, {
+"a": 0,
+"b": 1
+}, {
+"a": 0,
+"b": 2
+}, {
+"a": 0,
+"b": 7
+}, {
+"a": 1,
+"b": 3
+}, {
+"a": 1,
+"b": 5
+}, {
+"a": 1,
+"b": 6
+}, {
+"a": 2,
+"b": 9
+}, {
+"a": 2,
+"b": 4
+}, {
+"a": 2,
+"b": 7
+}, {
+"a": 3,
+"b": 8
+}, {
+"a": 3,
+"b": 6
+}, {
+"a": 4,
+"b": 9
+}, {
+"a": 5,
+"b": 11
+}, {
+"a": 5,
+"b": 6
+}, {
+"a": 5,
+"b": 7
+}, {
+"a": 5,
+"b": 10
+}, {
+"a": 6,
+"b": 13
+}, {
+"a": 6,
+"b": 8
+}, {
+"a": 6,
+"b": 11
+}, {
+"a": 7,
+"b": 9
+}, {
+"a": 7,
+"b": 12
+}, {
+"a": 7,
+"b": 10
+}, {
+"a": 8,
+"b": 13
+}, {
+"a": 9,
+"b": 14
+}, {
+"a": 9,
+"b": 12
+}, {
+"a": 10,
+"b": 15
+}, {
+"a": 10,
+"b": 11
+}, {
+"a": 10,
+"b": 17
+}, {
+"a": 10,
+"b": 12
+}, {
+"a": 11,
+"b": 13
+}, {
+"a": 11,
+"b": 15
+}, {
+"a": 11,
+"b": 16
+}, {
+"a": 12,
+"b": 19
+}, {
+"a": 12,
+"b": 14
+}, {
+"a": 12,
+"b": 17
+}, {
+"a": 13,
+"b": 18
+}, {
+"a": 13,
+"b": 16
+}, {
+"a": 14,
+"b": 19
+}, {
+"a": 15,
+"b": 21
+}, {
+"a": 15,
+"b": 16
+}, {
+"a": 15,
+"b": 17
+}, {
+"a": 15,
+"b": 20
+}, {
+"a": 16,
+"b": 23
+}, {
+"a": 16,
+"b": 18
+}, {
+"a": 16,
+"b": 21
+}, {
+"a": 17,
+"b": 19
+}, {
+"a": 17,
+"b": 22
+}, {
+"a": 17,
+"b": 20
+}, {
+"a": 18,
+"b": 23
+}, {
+"a": 19,
+"b": 24
+}, {
+"a": 19,
+"b": 22
+}, {
+"a": 20,
+"b": 25
+}, {
+"a": 20,
+"b": 21
+}, {
+"a": 20,
+"b": 27
+}, {
+"a": 20,
+"b": 22
+}, {
+"a": 21,
+"b": 23
+}, {
+"a": 21,
+"b": 25
+}, {
+"a": 21,
+"b": 26
+}, {
+"a": 22,
+"b": 29
+}, {
+"a": 22,
+"b": 24
+}, {
+"a": 22,
+"b": 27
+}, {
+"a": 23,
+"b": 28
+}, {
+"a": 23,
+"b": 26
+}, {
+"a": 24,
+"b": 29
+}, {
+"a": 25,
+"b": 31
+}, {
+"a": 25,
+"b": 26
+}, {
+"a": 25,
+"b": 27
+}, {
+"a": 25,
+"b": 30
+}, {
+"a": 26,
+"b": 33
+}, {
+"a": 26,
+"b": 28
+}, {
+"a": 26,
+"b": 31
+}, {
+"a": 27,
+"b": 29
+}, {
+"a": 27,
+"b": 32
+}, {
+"a": 27,
+"b": 30
+}, {
+"a": 28,
+"b": 33
+}, {
+"a": 29,
+"b": 34
+}, {
+"a": 29,
+"b": 32
+}, {
+"a": 30,
+"b": 31
+}, {
+"a": 30,
+"b": 32
+}, {
+"a": 31,
+"b": 33
+}, {
+"a": 32,
+"b": 34
+} ]
+
+[sub_resource type="BoxShape" id=176]
+extents = Vector3( 0.25, 0.15, 0.1 )
+
+[sub_resource type="CubeMesh" id=177]
+size = Vector3( 0.5, 0.301, 0.2 )
+
+[node name="wall" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275572, 0 )
+mass = 100.0
+contacts_reported = 16
+contact_monitor = true
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+angular_damp = 1e-07
+script = ExtResource( 1 )
+anchor_enabled = true
+_graph = SubResource( 180 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape2"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape3"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape4"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape5" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape5"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape6" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape6"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape7" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape7"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape8" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape8"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape9" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape9"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape10" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.3, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape10"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape11" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape11"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape12" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape12"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape13" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape13"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape14" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape14"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape15" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.6, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape15"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape16" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape16"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape17" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape17"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape18" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape18"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape19" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape19"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape20" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799999, 0.9, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape20"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape21" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape21"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape22" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape22"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape23" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape23"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape24" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape24"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape25" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999999, 1.2, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape25"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape26" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape26"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape27" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape27"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape28" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape28"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape29" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape29"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape30" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.799999, 1.5, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape30"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape31" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape31"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape32" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape32"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape33" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape33"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape34" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape34"]
+mesh = SubResource( 177 )
+material/0 = null
+
+[node name="CollisionShape35" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999999, 1.8, 0 )
+shape = SubResource( 176 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape35"]
+mesh = SubResource( 177 )
+material/0 = null
