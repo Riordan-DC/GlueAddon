@@ -1,13 +1,10 @@
 extends Node
 
-const BakedFractureCPP = preload("res://addons/glue/gdnative/bakedfracture_class.gdns")
-const GGraph = preload("res://addons/glue/gdnative/ggraph_class.gdns")
-
 static func glue(obj, scene_root, save_path: String="res://addons/glue/graphs/", ground_parent:Node=null):
-	obj._graph = GGraph.new()
+	obj._graph = Ggraph.new()
 	obj._graph._nodes = {}
 	obj._graph._edges = []
-	var world = obj.get_world()
+	var world = obj.get_world_3d()
 	var space_state = world.direct_space_state
 	
 	# Ground bodies
@@ -16,7 +13,7 @@ static func glue(obj, scene_root, save_path: String="res://addons/glue/graphs/",
 		ground_bodies = ground_parent.get_tree().get_nodes_in_group("ground")
 		for body_idx in range(ground_bodies.size()):
 			var body = ground_bodies[body_idx]
-			if not body is StaticBody:
+			if not body is StaticBody3D:
 				ground_bodies.remove(body_idx)
 			else:
 				ground_bodies[body_idx] = body.get_instance_id()
@@ -31,12 +28,12 @@ static func glue(obj, scene_root, save_path: String="res://addons/glue/graphs/",
 		print(ground_bodies)
 	
 	var shape_owners: Array = obj.get_shape_owners()
-	if shape_owners.empty():
+	if shape_owners.is_empty():
 		# Build collision shapes from children meshes
 		for child in obj.get_children():
-			if child is MeshInstance:
+			if child is MeshInstance3D:
 				var convexshape = child.mesh.create_convex_shape(true, true)
-				var shape = CollisionShape.new()
+				var shape = CollisionShape3D.new()
 				shape.shape = convexshape
 				
 				obj.add_child(shape)
@@ -46,13 +43,13 @@ static func glue(obj, scene_root, save_path: String="res://addons/glue/graphs/",
 				obj.remove_child(child)
 				shape.add_child(child)
 				child.set_owner(scene_root)
-				child.transform = Transform.IDENTITY
+				child.transform = Transform3D.IDENTITY
 	
 	for owner_id in obj.get_shape_owners():
-		var shape_obj: CollisionShape = obj.shape_owner_get_owner(owner_id)
+		var shape_obj: CollisionShape3D = obj.shape_owner_get_owner(owner_id)
 		var shape_id = owner_id
 		var shape = obj.shape_owner_get_shape(owner_id, 0)
-		var query = PhysicsShapeQueryParameters.new()
+		var query = PhysicsShapeQueryParameters3D.new()
 		query.set_shape(shape)
 		query.collision_mask = 0xFFFFFFFFF
 		query.transform = shape_obj.global_transform
@@ -80,8 +77,8 @@ static func glue(obj, scene_root, save_path: String="res://addons/glue/graphs/",
 	
 	var graph_filename = save_path + "%s_graph.tres" % [obj.name]
 	print(graph_filename)
-	ResourceSaver.save(graph_filename, obj._graph)
-	obj.update_gizmo()
+	ResourceSaver.save(obj._graph, graph_filename)
+	obj.update_gizmos()
 
 static func mesh_centroid(mesh: Mesh) -> Vector3:
 	var verts: Array = mesh.surface_get_arrays(ArrayMesh.ARRAY_VERTEX)

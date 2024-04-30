@@ -1,0 +1,45 @@
+{
+  "configurations": [
+    {
+      "name": "Debug Godot Game",
+      "project": "C:\\Users\\Riordan\\Downloads\\Godots\\future\\Godot_v4.2.2-stable_win64.exe\\Godot_v4.2.2-stable_win64.exe",
+      "args": [ "--path", "C:\\Users\\Riordan\\Downloads\\misc\\GlueAddon" ],
+      "preLaunchTask": "scons",
+      "includePath": [
+        "${env.INCLUDE}",
+        "${workspaceRoot}\\**",
+        "${workspaceRoot}\\godot-cpp"
+      ]
+    },
+    {
+      "name": "Debug Godot Editor",
+      "project": "C:\\Users\\Riordan\\Downloads\\Godots\\future\\Godot_v4.2.2-stable_win64.exe\\Godot_v4.2.2-stable_win64.exe",
+      "args": [ "-e", "C:\\Users\\Riordan\\Downloads\\misc\\GlueAddon" ],
+      "preLaunchTask": "scons",
+      "includePath": [
+        "${env.INCLUDE}",
+        "${workspaceRoot}\\**",
+        "${workspaceRoot}\\godot-cpp"
+      ]
+    },
+    {
+
+      "inheritEnvironments": [
+        "msvc_x64"
+      ],
+      "name": "x64-Debug",
+      "includePath": [
+        "${env.INCLUDE}",
+        "${workspaceRoot}\\**",
+        "${workspaceRoot}\\godot-cpp"
+      ],
+      "defines": [
+        "WIN32",
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "intelliSenseMode": "windows-msvc-x64"
+    }
+  ]
+}

@@ -14,24 +14,34 @@ void BakedFracture::_init() {
 
 }
 
-void BakedFracture::set_debug_graph(bool value) {
-	glue_debug_graph = value;
-	if (_debug_drawer != nullptr)
-		_debug_drawer->set_visible(glue_debug_graph);
-}
+// void BakedFracture::set_debug_graph(bool value) {
+	// glue_debug_graph = value;
+	// if (_debug_drawer != nullptr)
+	// 	_debug_drawer->set_visible(glue_debug_graph);
+// }
 
-bool BakedFracture::get_debug_graph() {
-	return glue_debug_graph;
-}
 
 void BakedFracture::_ready() {
 	set_process(true);
 	set_angular_damp(0.000001f);
 	set_contact_monitor(true);
+
+	set_freeze_mode(RigidBody3D::FREEZE_MODE_KINEMATIC);
+
 	velocity_inital = get_linear_velocity();
+	
 	if (get_max_contacts_reported() == 0)
 		set_max_contacts_reported(24);
 	set_use_custom_integrator(!bullet_backend);
+
+	Variant engine_name = ProjectSettings::get_singleton()->get("physics/3d/physics_engine");
+	if (engine_name.get_type() == Variant::STRING) {
+		//godot::UtilityFunctions::print(engine_name);
+		if (engine_name == "JoltPhysics3D") {
+			jolt_backend = true;
+		}
+	}
+
 	if (!Engine::get_singleton()->is_editor_hint()) {
 		if (_graph != nullptr) {
 			if (glue_debug_graph) {
@@ -59,14 +69,14 @@ void BakedFracture::_ready() {
 	}
 }
 
-void BakedFracture::_process(float p_delta) {
+void BakedFracture::_process(double p_delta) {
 	update();
 }
 
 void BakedFracture::update() {
 	if (glue_debug_graph) {
 		if (_debug_drawer != nullptr) {
-			if (Engine::get_singleton()->get_idle_frames() % 20 == 0) {
+			if (Engine::get_singleton()->get_process_frames() % 20 == 0) {
 				glue_debug_draw();
 			}
 		} else {
@@ -90,15 +100,20 @@ void BakedFracture::update() {
 void BakedFracture::set_anchor_enabled(bool value) {
 	anchor_enabled = value;
 	// TODO: Check up on this
-	set_axis_lock(PhysicsServer::BodyAxis::BODY_AXIS_LINEAR_X, value);
-	set_axis_lock(PhysicsServer::BodyAxis::BODY_AXIS_LINEAR_Y, value);
-	set_axis_lock(PhysicsServer::BodyAxis::BODY_AXIS_LINEAR_Z, value);
-	set_axis_lock(PhysicsServer::BodyAxis::BODY_AXIS_ANGULAR_X, value);
-	set_axis_lock(PhysicsServer::BodyAxis::BODY_AXIS_ANGULAR_Y, value);
-	set_axis_lock(PhysicsServer::BodyAxis::BODY_AXIS_ANGULAR_Z, value);
+	if (jolt_backend) {
+		set_freeze_enabled(value);
+	}
+	else {
+		set_axis_lock(PhysicsServer3D::BodyAxis::BODY_AXIS_LINEAR_X, value);
+		set_axis_lock(PhysicsServer3D::BodyAxis::BODY_AXIS_LINEAR_Y, value);
+		set_axis_lock(PhysicsServer3D::BodyAxis::BODY_AXIS_LINEAR_Z, value);
+		set_axis_lock(PhysicsServer3D::BodyAxis::BODY_AXIS_ANGULAR_X, value);
+		set_axis_lock(PhysicsServer3D::BodyAxis::BODY_AXIS_ANGULAR_Y, value);
+		set_axis_lock(PhysicsServer3D::BodyAxis::BODY_AXIS_ANGULAR_Z, value);
+	}
 }
 
-void BakedFracture::_integrate_forces(PhysicsDirectBodyState* state) {
+void BakedFracture::_integrate_forces(PhysicsDirectBodyState3D* state) {
 	if (!state->is_sleeping()) {
 		int64_t contact_count = state->get_contact_count();
 		Array shape_owners = get_shape_owners();
@@ -108,7 +123,7 @@ void BakedFracture::_integrate_forces(PhysicsDirectBodyState* state) {
 				continue; // shape_id out of bounds. This rarely happens.
 			}
 			//shape_id = shape_find_owner(shape_id);
-			// indirect the index through the shape owners array because internally CollisionShape reorganises shape ids.
+			// indirect the index through the shape owners array because internally CollisionShape3D reorganises shape ids.
 			shape_id = shape_owners[shape_id];
 
 			Dictionary node = _graph->_nodes[shape_id];
@@ -120,7 +135,7 @@ void BakedFracture::_integrate_forces(PhysicsDirectBodyState* state) {
 
 			Vector3 contact_normal = state->get_contact_local_normal(contact);
 			Object* collider_object = state->get_contact_collider_object(contact);
-			RigidBody* rigid_body = Object::cast_to<RigidBody>(collider_object);
+			RigidBody3D* rigid_body = Object::cast_to<RigidBody3D>(collider_object);
 
 			// delta V = v_f - v_i
 			// v_f = velocity final (state->get_linear_velocity())
@@ -136,7 +151,7 @@ void BakedFracture::_integrate_forces(PhysicsDirectBodyState* state) {
 				mass += rigid_body->get_mass();
 			}
 
-			Vector3 vel = Vector3::ZERO;
+			Vector3 vel = Vector3();
 			if (state->get_step() > 0.0) {
 				vel = speed_difference; // state->get_step();
 			}
@@ -148,7 +163,7 @@ void BakedFracture::_integrate_forces(PhysicsDirectBodyState* state) {
 			
 			if (force_power > force_threshold) {
 				node["force"] = (Vector3)node["force"] + force_vector;
-				//Godot::print(String("Node (") + rigidbody->get_name() + ")FORCED: " + String::num_int64(shape_id) + " [" + String::num_real(force_power) + "]");
+				//Godot::print(String("Node (") + RigidBody3D->get_name() + ")FORCED: " + String::num_int64(shape_id) + " [" + String::num_real(force_power) + "]");
 			}
 		}
 
@@ -194,7 +209,7 @@ void BakedFracture::propagate(bool force_update) {
 		
 		// TODO: Return here and consider commented lines
 		if ((float)node["bond"] <= 0.0) {
-			PoolIntArray neighbours = _graph->neighbours(node_key);
+			PackedInt32Array neighbours = _graph->neighbours(node_key);
 			for (int n = 0; n < neighbours.size(); n++) {
 				int neighbor = neighbours[n];
 				Dictionary neighbor_node = _graph->_nodes[neighbor];
@@ -208,7 +223,7 @@ void BakedFracture::propagate(bool force_update) {
 				}
 			}
 			node["bond"] = glue_strength;
-			node["force"] = Vector3::ZERO;
+			node["force"] = Vector3(0,0,0);
 		}
 	}
 	
@@ -246,11 +261,11 @@ void BakedFracture::propagate(bool force_update) {
 			}
 			Array ar = subgraphs[gidx];
 			if (ar.size() == 1) {
-				// Single fragment remains, convert to simple rigidbody
+				// Single fragment remains, convert to simple RigidBody3D
 				Dictionary node = _graph->_nodes[ar[0]];
 				detach_shape( ar[0], node["force"]);
 			}
-			subgraphs.remove(gidx);
+			subgraphs.remove_at(gidx);
 
 			for (int i = 0; i < subgraphs.size(); i++) {
 				Array subgraph = subgraphs[i];
@@ -266,7 +281,7 @@ void BakedFracture::propagate(bool force_update) {
 		} else if (subgraphs.size() == 1) {
 			Array ar = subgraphs[0];
 			if (ar.size() == 1) {
-				// Single fragment remains, convert to simple rigidbody
+				// Single fragment remains, convert to simple RigidBody3D
 				Dictionary node = _graph->_nodes[ar[0]];
 				detach_shape(ar[0], node["force"]);
 			}
@@ -296,7 +311,7 @@ void BakedFracture::detach_shape(int shape_id, Vector3 force) {
 		return;
 	}
 
-	RigidBody* new_body = RigidBody::_new();
+	RigidBody3D* new_body = memnew(RigidBody3D);
 	new_body->set_angular_velocity(get_angular_velocity());
 	new_body->set_linear_velocity(get_linear_velocity());
 
@@ -320,7 +335,7 @@ void BakedFracture::detach_shape(int shape_id, Vector3 force) {
 		get_parent()->add_child(new_body);
 	}
 	new_body->set_global_transform(get_global_transform());
-	CollisionShape* colshape = Object::cast_to<CollisionShape>(shape_owner_get_owner(shape_id));
+	CollisionShape3D* colshape = Object::cast_to<CollisionShape3D>(shape_owner_get_owner(shape_id));
 	
 	if (colshape == nullptr) {
 		return;
@@ -328,7 +343,7 @@ void BakedFracture::detach_shape(int shape_id, Vector3 force) {
 
 	if (bullet_backend) {
 		new_body->set_global_transform(colshape->get_global_transform());
-		colshape->set_transform(Transform::IDENTITY);
+		colshape->set_transform(Transform3D(Basis(Vector3(1,0,0), Vector3(0,1,0), Vector3(0,0,1))));
 	}
 
 	remove_child(colshape);
@@ -337,7 +352,7 @@ void BakedFracture::detach_shape(int shape_id, Vector3 force) {
 	
 	//force = force.normalized() * Math::clamp(force.length(), 0.0f, 100.0f);
 	_graph->remove_node(shape_id);	
-	new_body->apply_impulse(Vector3::ZERO, force);
+	new_body->apply_impulse(Vector3(), force);
 	connectivity_changed = true;
 	center_changed = true;
 }
@@ -345,7 +360,7 @@ void BakedFracture::detach_shape(int shape_id, Vector3 force) {
 void BakedFracture::fracture_subgraph(Array subgraph_nodes) {
 	// Engine.time_scale = 0.05
 	// Build a new baked fractured with the shapes in subgraph
-	BakedFracture* fracture = BakedFracture::_new();
+	BakedFracture* fracture = memnew(BakedFracture);
 
 	if (group != "") {
 		fracture->add_to_group(group);
@@ -374,20 +389,20 @@ void BakedFracture::fracture_subgraph(Array subgraph_nodes) {
 	fracture->set_global_transform(get_global_transform());
 	
 	if (bullet_backend) {
-		Transform t = fracture->get_global_transform();
+		Transform3D t = fracture->get_global_transform();
 		t.origin = fracture->to_global(fracture->_graph->centroid());
 		fracture->set_global_transform(t);
 	}
 	
 	for (int n = 0; n < subgraph_nodes.size(); n++) {
-		CollisionShape* colshape = Object::cast_to<CollisionShape>(shape_owner_get_owner(subgraph_nodes[n]));
+		CollisionShape3D* colshape = Object::cast_to<CollisionShape3D>(shape_owner_get_owner(subgraph_nodes[n]));
 		Vector3 colshape_global = colshape->get_global_transform().origin;
 		remove_child(colshape);
 		fracture->add_child(colshape);
 		colshape->set_owner(fracture);
 		
 		if (bullet_backend) {
-			Transform t = colshape->get_global_transform();
+			Transform3D t = colshape->get_global_transform();
 			t.origin = colshape_global;
 			colshape->set_global_transform(t);
 
@@ -408,18 +423,18 @@ void BakedFracture::recalculate_center_of_mass() {
 	for (int n = 0; n < shape_owners.size(); n++) {
 		Array pair;
 		pair.append(shape_owners[n]);
-		pair.append(Object::cast_to<CollisionShape>(shape_owner_get_owner(shape_owners[n]))->get_global_transform().origin);
+		pair.append(Object::cast_to<CollisionShape3D>(shape_owner_get_owner(shape_owners[n]))->get_global_transform().origin);
 		shape_globals.append(pair);
 	}
 
-	Transform t = get_global_transform();
+	Transform3D t = get_global_transform();
 	t.origin = to_global(_graph->centroid());
 	set_global_transform(t);
 	for (int n = 0; n < shape_globals.size(); n++) {
 		Array pair = shape_globals[n];
 		int shaper_owner = pair[0];
-		CollisionShape* colshape = Object::cast_to<CollisionShape>(shape_owner_get_owner(shaper_owner));
-		Transform t = colshape->get_global_transform();
+		CollisionShape3D* colshape = Object::cast_to<CollisionShape3D>(shape_owner_get_owner(shaper_owner));
+		Transform3D t = colshape->get_global_transform();
 		t.origin = pair[1];
 		colshape->set_global_transform(t);
 		Dictionary node = _graph->_nodes[pair[0]];
@@ -427,83 +442,79 @@ void BakedFracture::recalculate_center_of_mass() {
 	}
 }
 
-void BakedFracture::mesh_centroid(Mesh* mesh) {
-
-}
-
 void BakedFracture::glue_debug_setup() {
-	_debug_line_mat = SpatialMaterial::_new();
+	// _debug_line_mat = SpatialMaterial::_new();
 
-	_debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_UNSHADED, true);
-	_debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_DISABLE_DEPTH_TEST, true);
-	_debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_USE_POINT_SIZE, true);
-	_debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_ALBEDO_FROM_VERTEX_COLOR, true);
+	// _debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_UNSHADED, true);
+	// _debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_DISABLE_DEPTH_TEST, true);
+	// _debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_USE_POINT_SIZE, true);
+	// _debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_ALBEDO_FROM_VERTEX_COLOR, true);
 
-	_debug_line_mat->set_albedo(Color(1.0,1.0,1.0,1.0));
-	_debug_line_mat->set_line_width(4.0);
-	_debug_line_mat->set_cull_mode(SpatialMaterial::CullMode::CULL_DISABLED);
+	// _debug_line_mat->set_albedo(Color(1.0,1.0,1.0,1.0));
+	// _debug_line_mat->set_line_width(4.0);
+	// _debug_line_mat->set_cull_mode(SpatialMaterial::CullMode::CULL_DISABLED);
 	
 
-	_debug_point_mat = SpatialMaterial::_new();
-	_debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_UNSHADED, true);
-	_debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_DISABLE_DEPTH_TEST, true);
-	_debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_USE_POINT_SIZE, true);
-	_debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_ALBEDO_FROM_VERTEX_COLOR, true);
+	// _debug_point_mat = SpatialMaterial::_new();
+	// _debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_UNSHADED, true);
+	// _debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_DISABLE_DEPTH_TEST, true);
+	// _debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_USE_POINT_SIZE, true);
+	// _debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_ALBEDO_FROM_VERTEX_COLOR, true);
 
-	_debug_point_mat->set_albedo(Color(1.0,1.0,1.0,1.0));
-	_debug_point_mat->set_point_size(10.0);
-	_debug_point_mat->set_cull_mode(SpatialMaterial::CullMode::CULL_DISABLED);
+	// _debug_point_mat->set_albedo(Color(1.0,1.0,1.0,1.0));
+	// _debug_point_mat->set_point_size(10.0);
+	// _debug_point_mat->set_cull_mode(SpatialMaterial::CullMode::CULL_DISABLED);
 	
 
-	_debug_drawer = ImmediateGeometry::_new();
-	add_child(_debug_drawer);
-	_debug_drawer->clear();
+	// _debug_drawer = ImmediateGeometry::_new();
+	// add_child(_debug_drawer);
+	// _debug_drawer->clear();
 }
 
 void BakedFracture::glue_debug_draw() {
-	if (!Engine::get_singleton()->is_editor_hint() && glue_debug_graph && _graph != nullptr) {
-		_debug_drawer->clear();
-		//_debug_drawer->set_material_override(_debug_line_mat);
+	// if (!Engine::get_singleton()->is_editor_hint() && glue_debug_graph && _graph != nullptr) {
+	// 	_debug_drawer->clear();
+	// 	//_debug_drawer->set_material_override(_debug_line_mat);
 		
-		// Draw edges
-		for (int i = 0; i < _graph->_edges.size(); i++) {
-			Dictionary x = _graph->_edges[i];
-			_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_LINE_STRIP);
-			_debug_drawer->set_color(Color(1.0,1.0,1.0,1.0));
-			Dictionary node1 = _graph->_nodes[x["a"]];
-			Dictionary node2 = _graph->_nodes[x["b"]];
-			_debug_drawer->add_vertex(node1["position"]);
-			_debug_drawer->add_vertex(node2["position"]);
-			_debug_drawer->end();
-		}
+	// 	// Draw edges
+	// 	for (int i = 0; i < _graph->_edges.size(); i++) {
+	// 		Dictionary x = _graph->_edges[i];
+	// 		_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_LINE_STRIP);
+	// 		_debug_drawer->set_color(Color(1.0,1.0,1.0,1.0));
+	// 		Dictionary node1 = _graph->_nodes[x["a"]];
+	// 		Dictionary node2 = _graph->_nodes[x["b"]];
+	// 		_debug_drawer->add_vertex(node1["position"]);
+	// 		_debug_drawer->add_vertex(node2["position"]);
+	// 		_debug_drawer->end();
+	// 	}
 		
-		_debug_drawer->set_material_override(_debug_point_mat);
-		// Draw nodes
-		Array keys = _graph->_nodes.keys();
-		for (int x = 0; x < keys.size(); x++) {
-			Dictionary n = _graph->_nodes[keys[x]];
-			_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_POINTS);
-			if (n["anchor"]) {
-				_debug_drawer->set_color(Color(0,0,1));
-			} else {
-				if (((Vector3)n["force"]).length() > 0) {
-					_debug_drawer->set_color(Color(1,0,0));
-				} else {
-					_debug_drawer->set_color(Color(0,1,0));
-				}
-			}
-			_debug_drawer->add_vertex(n["position"]);
-			_debug_drawer->end();
-		}
+	// 	_debug_drawer->set_material_override(_debug_point_mat);
+	// 	// Draw nodes
+	// 	Array keys = _graph->_nodes.keys();
+	// 	for (int x = 0; x < keys.size(); x++) {
+	// 		Dictionary n = _graph->_nodes[keys[x]];
+	// 		_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_POINTS);
+	// 		if (n["anchor"]) {
+	// 			_debug_drawer->set_color(Color(0,0,1));
+	// 		} else {
+	// 			if (((Vector3)n["force"]).length() > 0) {
+	// 				_debug_drawer->set_color(Color(1,0,0));
+	// 			} else {
+	// 				_debug_drawer->set_color(Color(0,1,0));
+	// 			}
+	// 		}
+	// 		_debug_drawer->add_vertex(n["position"]);
+	// 		_debug_drawer->end();
+	// 	}
 		
-		if (bullet_backend) {
-			// draw center of mass
-			_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_POINTS);
-			_debug_drawer->set_color(Color(0.5, 0.0, 1.0, 1.0));
-			_debug_drawer->add_vertex(Vector3());
-			_debug_drawer->end();
-		}
-	}
+	// 	if (bullet_backend) {
+	// 		// draw center of mass
+	// 		_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_POINTS);
+	// 		_debug_drawer->set_color(Color(0.5, 0.0, 1.0, 1.0));
+	// 		_debug_drawer->add_vertex(Vector3());
+	// 		_debug_drawer->end();
+	// 	}
+	// }
 }
 
 //void glue();
@@ -517,38 +528,66 @@ Ref<Ggraph> BakedFracture::get_graph() {
 	return _graph;
 }
 
-void BakedFracture::_register_methods() {
+void BakedFracture::_bind_methods() {
 	// Functions
-	//register_method("glue_set_debug_graph", &BakedFracture::glue_set_debug_graph);
-	register_method("_ready", &BakedFracture::_ready);
-	register_method("_process", &BakedFracture::_process);
-	register_method("update", &BakedFracture::update);
-	register_method("set_anchor_enabled", &BakedFracture::set_anchor_enabled);
-	register_method("_integrate_forces", &BakedFracture::_integrate_forces);
-	register_method("propagate", &BakedFracture::propagate);
-	register_method("detach_shape", &BakedFracture::detach_shape);
-	register_method("fracture_subgraph", &BakedFracture::fracture_subgraph);
-	register_method("recalculate_center_of_mass", &BakedFracture::recalculate_center_of_mass);
-	register_method("mesh_centroid", &BakedFracture::mesh_centroid);
-	register_method("glue_debug_setup", &BakedFracture::glue_debug_setup);
-	register_method("glue_debug_draw", &BakedFracture::glue_debug_draw);
+	//ClassDB::bind_method("glue_set_debug_graph", &BakedFracture::glue_set_debug_graph);
+	// ClassDB::bind_method(D_METHOD("_ready"), &BakedFracture::_ready);
+	// ClassDB::bind_method(D_METHOD("_process"), &BakedFracture::_process);
+	// ClassDB::bind_method(D_METHOD("_integrate_forces"), &BakedFracture::_integrate_forces);
+	ClassDB::bind_method(D_METHOD("update"), &BakedFracture::update);
+	ClassDB::bind_method(D_METHOD("propagate", "force_update"), &BakedFracture::propagate);
+	ClassDB::bind_method(D_METHOD("detach_shape", "shape_id", "force"), &BakedFracture::detach_shape);
+	ClassDB::bind_method(D_METHOD("fracture_subgraph", "nodes"), &BakedFracture::fracture_subgraph);
+	ClassDB::bind_method(D_METHOD("recalculate_center_of_mass"), &BakedFracture::recalculate_center_of_mass);
+	ClassDB::bind_method(D_METHOD("glue_debug_setup"), &BakedFracture::glue_debug_setup);
+	ClassDB::bind_method(D_METHOD("glue_debug_draw"), &BakedFracture::glue_debug_draw);
+
 
 	// Properties
-	register_property("glue_debug_graph", &BakedFracture::set_debug_graph, &BakedFracture::get_debug_graph, false); 
-	register_property("glue_debug_graph", &BakedFracture::glue_debug_graph, false);
-	register_property("glue_margin", &BakedFracture::glue_margin, 0.005f);
-	register_property("glue_strength", &BakedFracture::glue_strength, 500.0f);
-	register_property("force_threshold", &BakedFracture::force_threshold, 1.0f);
-	register_property("anchor_enabled", &BakedFracture::anchor_enabled, false);
-	register_property("anchor_static", &BakedFracture::anchor_static, false);
-	register_property<BakedFracture, Ref<GDScript>>("piece_script", &BakedFracture::piece_script, nullptr);
-	register_property<BakedFracture, String>("group", &BakedFracture::group, "");
-	
-	register_property<BakedFracture, Node*>("piece_parent", &BakedFracture::piece_parent, nullptr);
-	//register_property<BakedFracture, Ref<Ggraph>>("_graph", &BakedFracture::_graph, Ref<Ggraph>(), GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT, GODOT_PROPERTY_HINT_RESOURCE_TYPE);
-    register_property<BakedFracture, Ref<Ggraph>>("_graph", &BakedFracture::set_graph, &BakedFracture::get_graph, Ref<Ggraph>(),  GODOT_METHOD_RPC_MODE_DISABLED, GODOT_PROPERTY_USAGE_DEFAULT, GODOT_PROPERTY_HINT_RESOURCE_TYPE);
-	register_property("connectivity_changed", &BakedFracture::connectivity_changed, false);
+	ClassDB::bind_method(D_METHOD("set_glue_debug_graph", "value"), &BakedFracture::set_glue_debug_graph);
+	ClassDB::bind_method(D_METHOD("get_glue_debug_graph"), &BakedFracture::get_glue_debug_graph);
+	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "glue_debug_graph"), "set_glue_debug_graph", "get_glue_debug_graph");
+
+	ClassDB::bind_method(D_METHOD("set_glue_margin", "value"), &BakedFracture::set_glue_margin);
+	ClassDB::bind_method(D_METHOD("get_glue_margin"), &BakedFracture::get_glue_margin);
+	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "glue_margin"), "set_glue_margin", "get_glue_margin");
+
+	ClassDB::bind_method(D_METHOD("set_glue_strength", "value"), &BakedFracture::set_glue_strength);
+	ClassDB::bind_method(D_METHOD("get_glue_strength"), &BakedFracture::get_glue_strength);
+	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "glue_strength"), "set_glue_strength", "get_glue_strength");
+
+	ClassDB::bind_method(D_METHOD("set_force_threshold", "value"), &BakedFracture::set_force_threshold);
+	ClassDB::bind_method(D_METHOD("get_force_threshold"), &BakedFracture::get_force_threshold);
+	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "force_threshold"), "set_force_threshold", "get_force_threshold");
+
+	ClassDB::bind_method(D_METHOD("set_anchor_enabled", "value"), &BakedFracture::set_anchor_enabled);
+	ClassDB::bind_method(D_METHOD("get_anchor_enabled"), &BakedFracture::get_anchor_enabled);
+	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "anchor_enabled"), "set_anchor_enabled", "get_anchor_enabled");
+
+	ClassDB::bind_method(D_METHOD("set_anchor_static", "value"), &BakedFracture::set_anchor_static);
+	ClassDB::bind_method(D_METHOD("get_anchor_static"), &BakedFracture::get_anchor_static);
+	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "anchor_static"), "set_anchor_static", "get_anchor_static");
+
+	ClassDB::bind_method(D_METHOD("set_piece_script", "value"), &BakedFracture::set_piece_script);
+	ClassDB::bind_method(D_METHOD("get_piece_script"), &BakedFracture::get_piece_script);
+	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "piece_script"), "set_piece_script", "get_piece_script");
+
+	ClassDB::bind_method(D_METHOD("set_group", "value"), &BakedFracture::set_group);
+	ClassDB::bind_method(D_METHOD("get_group"), &BakedFracture::get_group);
+	ADD_PROPERTY(PropertyInfo(Variant::STRING, "group"), "set_group", "get_group");
+
+	ClassDB::bind_method(D_METHOD("set_piece_parent", "value"), &BakedFracture::set_piece_parent);
+	ClassDB::bind_method(D_METHOD("get_piece_parent"), &BakedFracture::get_piece_parent);
+	ADD_PROPERTY(PropertyInfo(Variant::NODE_PATH, "piece_parent"), "set_piece_parent", "get_piece_parent");	
+
+	ClassDB::bind_method(D_METHOD("set_graph", "value"), &BakedFracture::set_graph);
+	ClassDB::bind_method(D_METHOD("get_graph"), &BakedFracture::get_graph);
+	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "_graph"), "set_graph", "get_graph");
+
+	ClassDB::bind_method(D_METHOD("set_connectivity_changed", "value"), &BakedFracture::set_connectivity_changed);
+	ClassDB::bind_method(D_METHOD("get_connectivity_changed"), &BakedFracture::get_connectivity_changed);
+	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "connectivity_changed"), "set_connectivity_changed", "get_connectivity_changed");
 
 	// Signals
-	register_signal<BakedFracture>((char*)"fractured");
+	ADD_SIGNAL(MethodInfo("fractured"));
 }

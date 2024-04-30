@@ -1,18 +1,18 @@
 # GlueGizmoPlugin.gd
-extends EditorSpatialGizmoPlugin
+extends EditorNode3DGizmoPlugin
 
-const BakedFracture = preload("res://addons/glue/scripts/BakedFracture.gd")
-const BakedFractureCPP = preload("res://addons/glue/gdnative/bakedfracture_class.gdns")
+#const BakedFracture = preload("res://addons/glue/scripts/BakedFracture.gd")
+#const BakedFractureCPP = preload("res://addons/glue/gdnative/bakedfracture_class.gdns")
 const GraphGizmo = preload("res://addons/glue/scripts/GraphGizmo.gd")
 
 func get_name():
 	return "GlueNode"
 
-func has_gizmo(spatial):
+func _has_gizmo(spatial):
 	return spatial is BakedFracture or "_graph" in spatial
 
 func _init():
-	var mat = SpatialMaterial.new()
+	var mat = StandardMaterial3D.new()
 	mat.albedo_color = Color(0,1,0)
 	mat.flags_no_depth_test = true
 	mat.flags_unshaded = true
@@ -22,11 +22,14 @@ func _init():
 	var anchor_texture = load("res://addons/glue/anchor_icon.png")
 	create_handle_material("anchor", false, anchor_texture)
 
-func create_gizmo(spatial):
+func _create_gizmo(spatial):
 	if spatial is BakedFracture or "_graph" in spatial:
 		return GraphGizmo.new()
 	else:
 		return null
+
+func _get_gizmo_name():
+	return "Glue Graph"
 
 #func redraw(gizmo):
 #	gizmo.clear()

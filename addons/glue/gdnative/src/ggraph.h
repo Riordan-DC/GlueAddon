@@ -5,12 +5,16 @@
 
 #include <assert.h>     /* assert */
 
-#include <Godot.hpp>
-#include <Resource.hpp>
-#include <String.hpp>
-#include <OS.hpp>
-#include <BitMap.hpp>
-#include <Color.hpp>
+#include <godot_cpp/godot.hpp>
+#include <godot_cpp/classes/resource.hpp>
+#include <godot_cpp/variant/string.hpp>
+#include <godot_cpp/variant/vector3.hpp>
+#include <godot_cpp/classes/os.hpp>
+#include <godot_cpp/classes/bit_map.hpp>
+#include <godot_cpp/variant/color.hpp>
+#include <godot_cpp/variant/dictionary.hpp>
+#include <godot_cpp/variant/array.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
 
 using namespace godot;
 
@@ -19,7 +23,7 @@ using namespace godot;
 #define BIT_VALUE(A,n) (A[(n)/32] & (1 << ((k) % 32)))
 
 class Ggraph : public Resource {
-    GODOT_CLASS(Ggraph, Resource);
+    GDCLASS(Ggraph, Resource);
     /*
     struct GVertex {
         Vector3 position;
@@ -37,7 +41,7 @@ public:
     void add_edge(int x, int y);
     void remove_edge(int x, int y);
     bool adjacent(int x, int y);
-    PoolIntArray neighbours(int x);
+    PackedInt32Array neighbours(int x);
     Vector3 centroid();
     Array subgraphs();
     Array nodes_edges(Array nodes);
@@ -48,16 +52,16 @@ public:
     Array get_edges();
     void set_edges(Array edges);
 
-    static void _register_methods();
+    static void _bind_methods();
     Dictionary _nodes;
     Array _edges;
 
     bool using_edge_matrix;
     Dictionary get_edge_matrix();
-    void set_edge_matrix(Ref<BitMap> p_edge_matrix);
+    void set_edge_matrix(BitMap* p_edge_matrix);
     void setup_edge_matrix();
     bool test_edge_matrix();
-    Ref<BitMap> edge_matrix;
+    BitMap* edge_matrix;
 };
 
 

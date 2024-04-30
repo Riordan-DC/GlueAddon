@@ -5,4 +5,7 @@ icon.svg.import
 .vscode/
 godot-cpp/
 
-*.dblite
+addons/glue/.sconsign.dblite
+
+addons/godot-jolt
+.vs

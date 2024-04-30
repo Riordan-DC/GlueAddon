@@ -2,25 +2,30 @@
 
 #include "ggraph.h"
 
-void Ggraph::_register_methods() {
-	register_method("add_node", &Ggraph::add_node);
-	register_method("remove_node", &Ggraph::remove_node);
-	register_method("add_edge", &Ggraph::add_edge);
-	register_method("remove_edge", &Ggraph::remove_edge);
+void Ggraph::_bind_methods() {
+	ClassDB::bind_method(D_METHOD("add_node"), &Ggraph::add_node);
+	ClassDB::bind_method(D_METHOD("remove_node"), &Ggraph::remove_node);
+	ClassDB::bind_method(D_METHOD("add_edge"), &Ggraph::add_edge);
+	ClassDB::bind_method(D_METHOD("remove_edge"), &Ggraph::remove_edge);
+	ClassDB::bind_method(D_METHOD("adjacent"), &Ggraph::adjacent);
+	ClassDB::bind_method(D_METHOD("neighbours"), &Ggraph::neighbours);
+	ClassDB::bind_method(D_METHOD("nodes_edges"), &Ggraph::nodes_edges);
+	ClassDB::bind_method(D_METHOD("centroid"), &Ggraph::centroid);
+	ClassDB::bind_method(D_METHOD("subgraphs"), &Ggraph::subgraphs);
+	ClassDB::bind_method(D_METHOD("remove_subgraph"), &Ggraph::remove_subgraph);
+	ClassDB::bind_method(D_METHOD("setup_edge_matrix"), &Ggraph::setup_edge_matrix);
+	ClassDB::bind_method(D_METHOD("set_edge_matrix"), &Ggraph::set_edge_matrix);
+	// ClassDB::bind_method("get_edge_matrix", &Ggraph::get_edge_matrix);
+	ClassDB::bind_method(D_METHOD("test_edge_matrix"), &Ggraph::test_edge_matrix);
 
-	register_method("adjacent", &Ggraph::adjacent);
-	register_method("neighbours", &Ggraph::neighbours);
-	register_method("nodes_edges", &Ggraph::nodes_edges);
-	register_method("centroid", &Ggraph::centroid);
-	register_method("subgraphs", &Ggraph::subgraphs);
-	register_method("remove_subgraph", &Ggraph::remove_subgraph);
-	register_method("setup_edge_matrix", &Ggraph::setup_edge_matrix);
-	register_method("set_edge_matrix", &Ggraph::set_edge_matrix);
-	register_method("get_edge_matrix", &Ggraph::get_edge_matrix);
-	register_method("test_edge_matrix", &Ggraph::test_edge_matrix);
+	ClassDB::bind_method(D_METHOD("set_nodes"), &Ggraph::set_nodes);
+	ClassDB::bind_method(D_METHOD("get_nodes"), &Ggraph::get_nodes);
+	ADD_PROPERTY(PropertyInfo(Variant::DICTIONARY, "_nodes"), "set_nodes", "get_nodes");
 
-	register_property("_nodes", &Ggraph::_nodes, Dictionary());
-	register_property("_edges", &Ggraph::_edges, Array());
+	ClassDB::bind_method(D_METHOD("set_edges"), &Ggraph::set_edges);
+	ClassDB::bind_method(D_METHOD("get_edges"), &Ggraph::get_edges);
+	ADD_PROPERTY(PropertyInfo(Variant::ARRAY, "_edges"), "set_edges", "get_edges");
+
 }
 
 void Ggraph::set_nodes(Dictionary nodes) {
@@ -39,11 +44,11 @@ Array Ggraph::get_edges() {
 	return _edges;
 }
 
-Dictionary Ggraph::get_edge_matrix() {
-	return edge_matrix->_get_data();
-}
+// Dictionary Ggraph::get_edge_matrix() {
+// 	return edge_matrix->_get_data();
+// }
 
-void Ggraph::set_edge_matrix(Ref<BitMap> p_edge_matrix) {
+void Ggraph::set_edge_matrix(BitMap* p_edge_matrix) {
 	edge_matrix = p_edge_matrix;
 }
 
@@ -61,8 +66,13 @@ void Ggraph::setup_edge_matrix() {
 	// This must be run after all the nodes are loaded.
 	// The edge matrix will NOT update node additions or subtractions
 	// Only edge additions
-	edge_matrix = Ref<BitMap>(BitMap::_new());
-	edge_matrix->create(Size2((real_t)_nodes.size(), (real_t)_nodes.size()));
+	edge_matrix = memnew(BitMap);
+	edge_matrix->create(
+		Vector2i(
+			(int32_t)_nodes.size(), 
+			(int32_t)_nodes.size()
+		)
+	);
 	//Godot::print(String("EDGE MATRIX: ") + String::num_real(edge_matrix->get_size().x) + " " + String::num_real(edge_matrix->get_size().y));
 	/*
 	if (!edge_matrix.is_valid()) {
@@ -71,13 +81,11 @@ void Ggraph::setup_edge_matrix() {
 		}
 	}*/
 	
-	if (edge_matrix.is_valid()) {
-		// update edge_matrix
-		for (int i = 0; i < _edges.size(); i++) {
-			Dictionary edge = _edges[i];
-			edge_matrix->set_bit(Point2(edge["a"], edge["b"]), true);
-			edge_matrix->set_bit(Point2(edge["b"], edge["a"]), true);
-		}
+	// update edge_matrix
+	for (int i = 0; i < _edges.size(); i++) {
+		Dictionary edge = _edges[i];
+		edge_matrix->set_bit(edge["a"], edge["b"], true);
+		edge_matrix->set_bit(edge["b"], edge["a"], true);
 	}
 	
 	using_edge_matrix = true;
@@ -86,8 +94,8 @@ void Ggraph::setup_edge_matrix() {
 bool Ggraph::test_edge_matrix() {
 	for (int i = 0; i < _edges.size(); i++) {
 		Dictionary edge = _edges[i];
-		assert(edge_matrix->get_bit(Vector2(edge["a"], edge["b"])));
-		assert(edge_matrix->get_bit(Vector2(edge["b"], edge["a"])));
+		assert(edge_matrix->get_bit(edge["a"], edge["b"]));
+		assert(edge_matrix->get_bit(edge["b"], edge["a"]));
 	}
 	return true;
 }
@@ -107,7 +115,7 @@ void Ggraph::remove_node(int x) {
 	for(int i = _edges.size()-1; i != -1; i--) {
 		Dictionary edge = _edges[i];
 		if ((int)edge["a"] == x || (int)edge["b"] == x) {
-			_edges.remove(i);
+			_edges.remove_at(i);
 		}
 	}
 	_nodes.erase(x);
@@ -116,8 +124,8 @@ void Ggraph::remove_node(int x) {
 
 	if (using_edge_matrix) {
 		for (int i = 0; i < edge_matrix->get_size().height; i++) {
-			edge_matrix->set_bit(Vector2(x, i), false);
-			edge_matrix->set_bit(Vector2(i, x), false);
+			edge_matrix->set_bit(x, i, false);
+			edge_matrix->set_bit(i, x, false);
 		}
 	}
 }
@@ -130,8 +138,8 @@ void Ggraph::add_edge(int x, int y) {
 	_edges.append(edge);
 
 	if (using_edge_matrix) {
-		edge_matrix->set_bit(Vector2(x, y), true);
-		edge_matrix->set_bit(Vector2(y, x), true);
+		edge_matrix->set_bit(x, y, true);
+		edge_matrix->set_bit(y, x, true);
 	}
 }
 
@@ -140,20 +148,20 @@ void Ggraph::remove_edge(int x, int y) {
 		//printf("%d --- %d == %d --- %d\n", (int)edge["a"], (int)edge["b"], x, y);
 		Dictionary edge = _edges[i];
 		if (((int)edge["a"] == x && (int)edge["b"] == y) || ((int)edge["a"] == y && (int)edge["b"] == x)) {
-			_edges.remove(i);
+			_edges.remove_at(i);
 			//return; // There should not be copies of the same edge
 		}
 	}
 
 	if (using_edge_matrix) {
-		edge_matrix->set_bit(Vector2(x, y), false);
-		edge_matrix->set_bit(Vector2(y, x), false);
+		edge_matrix->set_bit(x, y, false);
+		edge_matrix->set_bit(y, x, false);
 	}
 }
 
 bool Ggraph::adjacent(int x, int y) {
 	if (using_edge_matrix) {
-		return edge_matrix->get_bit(Vector2(x,y)) || edge_matrix->get_bit(Vector2(y,x));
+		return edge_matrix->get_bit(x, y) || edge_matrix->get_bit(y, x);
 	}
 
 	for(int i = 0; i < _edges.size(); i++) {
@@ -165,12 +173,12 @@ bool Ggraph::adjacent(int x, int y) {
 	return false;
 }
 
-PoolIntArray Ggraph::neighbours(int x) {
-	PoolIntArray n;
+PackedInt32Array Ggraph::neighbours(int x) {
+	PackedInt32Array n;
 
 	if (using_edge_matrix) {
 		for (int i = 0; i < edge_matrix->get_size().height; i++) {
-			if (edge_matrix->get_bit(Vector2(x, i)) || edge_matrix->get_bit(Vector2(i, x))) {
+			if (edge_matrix->get_bit(x, i) || edge_matrix->get_bit(i, x)) {
 				n.append(i);
 			}
 		}
@@ -187,8 +195,8 @@ PoolIntArray Ggraph::neighbours(int x) {
 }
 
 Vector3 Ggraph::centroid() {
-	if (_nodes.empty()) {
-		return Vector3::ZERO;
+	if (_nodes.is_empty()) {
+		return Vector3(0,0,0);
 	}
 	
 	Vector3 sum = Vector3();
@@ -200,7 +208,7 @@ Vector3 Ggraph::centroid() {
 }
 
 Array Ggraph::subgraphs() {
-	if (_nodes.empty()) {
+	if (_nodes.is_empty()) {
 		return Array();
 	}
 	Array r_subgraphs = Array();
@@ -223,14 +231,14 @@ Array Ggraph::subgraphs() {
 	//int64_t t = 0;
 	//int64_t t2 = 0;
 	while (nodes.size() > 0) { // quick
-		while (!queue.empty()) { // quick
+		while (!queue.is_empty()) { // quick
 			int node = queue.pop_back(); // front = DFS
 
 			//uint64_t begin = OS::get_singleton()->get_ticks_usec();
 			if (node == -1) {
-				Godot::print("WHY IS THERE A -1 HERE???");
+				godot::UtilityFunctions::print("WHY IS THERE A -1 HERE???");
 			}
-			PoolIntArray node_neighbours = neighbours(node); //neighbours(node); // slow but always performed once per node
+			PackedInt32Array node_neighbours = neighbours(node); //neighbours(node); // slow but always performed once per node
 			
 			//uint64_t end = OS::get_singleton()->get_ticks_usec();
 			//t = t + (end - begin);
@@ -279,7 +287,7 @@ Array Ggraph::nodes_edges(Array nodes) {
 Ggraph* Ggraph::remove_subgraph(Array nodes) {
 	// remove and return subgraph
 	// remaps shape owners incrementally
-	Ggraph *subgraph = Ggraph::_new();
+	Ggraph *subgraph = memnew(Ggraph);
 	Dictionary mapping = Dictionary();
 	int idx = 0;
 	for (int n = 0; n < nodes.size(); n++) {
@@ -302,7 +310,7 @@ Ggraph* Ggraph::remove_subgraph(Array nodes) {
 			new_edge["a"] = mapping[(int)edge["a"]];
 			new_edge["b"] = mapping[(int)edge["b"]];
 			subgraph->_edges.append(new_edge);
-			_edges.remove(i);
+			_edges.remove_at(i);
 		}
 	}
 	

@@ -1,25 +1,25 @@
-extends RigidBody
+extends RigidBody3D
 
-export(bool) var active = false
-export(float) var fuse = 5.0
-export(float) var force = 30.0
+@export var active = false
+@export var fuse = 5.0
+@export var force = 30.0
 
 var timer
-onready var explosion_area = $Area
-onready var explosion_shape = $Area/CollisionShape
+@onready var explosion_area = $Area
+@onready var explosion_shape = $Area/CollisionShape
 
 func _ready():
 	timer = Timer.new()
-	timer.connect("timeout", self, "explode", [explosion_shape])
+	timer.connect("timeout", self.explode.bind(explosion_shape))
 	add_child(timer)
 	
 	if active:
 		start_fuse()
 
-func explode(_explosion_shape: CollisionShape):
+func explode(_explosion_shape: CollisionShape3D):
 	if is_inside_tree():
-		var dss = get_world().direct_space_state
-		var q = PhysicsShapeQueryParameters.new()
+		var dss = get_world_3d().direct_space_state
+		var q = PhysicsShapeQueryParameters3D.new()
 		q.shape_rid = _explosion_shape.shape.get_rid()
 		q.transform = global_transform
 		q.collision_mask = (1 << 7) | (1 << 0)
@@ -36,10 +36,10 @@ func explode(_explosion_shape: CollisionShape):
 			var body = result["collider"]
 			var shape = result["shape"]
 			
-			q.exclude.append(body)
+			q.exclude.append(body.get_rid())
 #			var impulse_direction = global_transform.origin.direction_to(body.global_transform.origin) * force
 			
-			if body is RigidBody:
+			if body is RigidBody3D:
 				var ons = body.get_shape_owners()
 				if ons.size() > shape:
 					shape = ons[shape]
@@ -50,7 +50,7 @@ func explode(_explosion_shape: CollisionShape):
 		
 		for body in body_shapes.keys():
 			for shape in body_shapes[body]:
-				if body is RigidBody:
+				if body is RigidBody3D:
 					if body.has_method("detach_shape"):
 						# REVISIT THIS LINE. MIGHT HAVE TO USE UNMAPPED SHAPE
 						var shape_position = body.to_global(body.shape_owner_get_transform(shape).origin)
