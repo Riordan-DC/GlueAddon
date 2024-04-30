@@ -1,10 +1,10 @@
-# GlueAddon
-Author: Riordan (Upakai)
-[Twitter](https://twitter.com/RiordanCallil)
+# Riordan's Destruction Addon
+Author: Riordan (Upakai) <br>
+[Twitter](https://twitter.com/RiordanCallil) <br>
 [Ko-Fi](https://ko-fi.com/upakai)
 
 This is a Godot 4.x addon for simulated pre-fractured structural destruction. <br>
-This branch is made to work with Godot 4.2.2. Earlier versions may not work. <br>
+This branch only works with Godot >= 4.2, earlier versions may not work. <br>
 Tested with Jolt physics and Godot's physics. <br>
 <br>
 <br>

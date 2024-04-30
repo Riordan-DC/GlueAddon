@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg4gnlev81ka2"]
+[gd_scene load_steps=11 format=3 uid="uid://bg4gnlev81ka2"]
 
 [ext_resource type="PackedScene" path="res://addons/glue/scenes/DebugCamera.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cttk1y1lf32hd" path="res://addons/glue/props/wall_big.tscn" id="3_fy4av"]
 [ext_resource type="PackedScene" uid="uid://uogxfey0t03a" path="res://addons/glue/props/interior_wall.tscn" id="8"]
 
 [sub_resource type="BoxMesh" id="155"]
@@ -113,3 +114,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.445
 
 [node name="Spatial12" parent="." instance=ExtResource("8")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.445, -0.57, -0.235)
+
+[node name="wall_big" parent="." instance=ExtResource("3_fy4av")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1, 4)
