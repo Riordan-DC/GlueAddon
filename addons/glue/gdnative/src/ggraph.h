@@ -32,6 +32,8 @@ class Ggraph : public Resource {
         bool anchor;
         int group;
     };*/
+protected:
+    static void _bind_methods();
 public:
     Ggraph();
     ~Ggraph();
@@ -52,11 +54,10 @@ public:
     Array get_edges();
     void set_edges(Array edges);
 
-    static void _bind_methods();
     Dictionary _nodes;
     Array _edges;
 
-    bool using_edge_matrix;
+    bool using_edge_matrix = false;
     Dictionary get_edge_matrix();
     void set_edge_matrix(BitMap* p_edge_matrix);
     void setup_edge_matrix();

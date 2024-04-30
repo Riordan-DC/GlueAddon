@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg4gnlev81ka2"]
+[gd_scene load_steps=10 format=3 uid="uid://bg4gnlev81ka2"]
 
 [ext_resource type="PackedScene" path="res://addons/glue/scenes/DebugCamera.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://uogxfey0t03a" path="res://addons/glue/props/interior_wall.tscn" id="8"]
@@ -15,21 +15,22 @@ colors = PackedColorArray(0, 0, 0, 1, 0.972168, 0.151901, 0.151901, 1)
 [sub_resource type="GradientTexture1D" id="257"]
 gradient = SubResource("256")
 
-[sub_resource type="Sky" id="164"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_i3b46"]
+
+[sub_resource type="Sky" id="Sky_5cq73"]
+sky_material = SubResource("PanoramaSkyMaterial_i3b46")
 
 [sub_resource type="Environment" id="162"]
 background_mode = 1
-background_color = Color(0.215686, 0.215686, 0.215686, 1)
-sky = SubResource("164")
-ambient_light_color = Color(0.321569, 0.301961, 0.180392, 1)
-ambient_light_energy = 0.1
-tonemap_mode = 3
+background_color = Color(0.306923, 0.306923, 0.306923, 1)
+sky = SubResource("Sky_5cq73")
+ambient_light_color = Color(0.340339, 0.340339, 0.340339, 1)
+tonemap_mode = 2
 glow_enabled = true
 glow_levels/1 = 1.0
 glow_levels/7 = 1.0
 glow_bloom = 0.05
 glow_blend_mode = 1
-fog_enabled = true
 adjustment_color_correction = SubResource("257")
 
 [node name="Spatial" type="Node3D"]
@@ -56,10 +57,11 @@ spot_angle = 44.4398
 environment = SubResource("162")
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.683274, 0.572318, -0.453419, 0, 0.620984, 0.783824, 0.730162, -0.535566, 0.424302, 0, 14.4675, 0)
+transform = Transform3D(-0.528438, 0.665444, -0.527198, -1.67685e-08, 0.620984, 0.783823, 0.848972, 0.414202, -0.328152, 0, 14.4675, 0)
 light_energy = 0.3
 light_bake_mode = 0
 shadow_enabled = true
+shadow_blur = 1.03
 directional_shadow_mode = 0
 directional_shadow_split_2 = 0.258
 directional_shadow_max_distance = 20.0

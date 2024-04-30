@@ -150,7 +150,7 @@ func _process(delta):
 		Marker.global_transform.origin = new_pos
 		var distance: float = picked_obj.global_transform.origin.distance_to(new_pos)
 		var direction: Vector3 = picked_obj.global_transform.origin.direction_to(new_pos)
-		picked_obj.add_constant_central_force(direction * distance * snap_velocity)
+		picked_obj.apply_central_force(direction * distance * snap_velocity)
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		if Engine.time_scale > 0.06:

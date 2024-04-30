@@ -33,3 +33,6 @@ I've added the glue_test.tscn to the scenes/ folder. I used this scene to make t
 <br>Right mouse button = Launch grenade
 <br>R = Restart scene
 <br>Enter = Toggle slow motion
+
+## TODO
+- Refactor CPP to consider bullet_backend and jolt backend. There are slight differences. 

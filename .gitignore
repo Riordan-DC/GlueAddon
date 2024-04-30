@@ -9,3 +9,4 @@ addons/glue/.sconsign.dblite
 
 addons/godot-jolt
 .vs
+CppProperties.json

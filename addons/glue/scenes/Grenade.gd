@@ -25,7 +25,7 @@ func explode(_explosion_shape: CollisionShape3D):
 		q.collision_mask = (1 << 7) | (1 << 0)
 		q.exclude = [self]
 	
-		var results = dss.intersect_shape(q, 22)
+		var results = dss.intersect_shape(q, 31)
 		var fractures = []
 		
 		# Our first loop just gets all the shape ids! We must get these before we run detach because it
@@ -72,16 +72,16 @@ func explode(_explosion_shape: CollisionShape3D):
 #			fracture.connectivity_changed = true
 #			fracture.emit_signal("fractured")
 		
-#		yield(get_tree(), "idle_frame")
-#		# Apply impulse forces again
-#		results = dss.intersect_shape(q, 12)
-#		for result in results:
-#			var body = result["collider"]
-##			var shape = result["shape"]
-#			var impulse_direction = global_transform.origin.direction_to(body.global_transform.origin) * force
-#			if body is RigidBody:
-#				# Apply force to rigidbody
-#				body.apply_central_impulse(impulse_direction)
+		await get_tree().process_frame
+		# Apply impulse forces again
+		results = dss.intersect_shape(q, 31)
+		for result in results:
+			var body = result["collider"]
+#			var shape = result["shape"]
+			var impulse_direction = global_transform.origin.direction_to(body.global_transform.origin) * force
+			if body is RigidBody3D:
+				# Apply force to rigidbody
+				body.apply_central_impulse(impulse_direction)
 		
 		queue_free()
 

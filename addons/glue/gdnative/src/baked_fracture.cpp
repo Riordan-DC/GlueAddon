@@ -20,27 +20,28 @@ void BakedFracture::_init() {
 	// 	_debug_drawer->set_visible(glue_debug_graph);
 // }
 
-
 void BakedFracture::_ready() {
+	Variant engine_name = ProjectSettings::get_singleton()->get("physics/3d/physics_engine");
+	if (engine_name.get_type() == Variant::STRING) {
+		if (engine_name == "JoltPhysics3D") {
+			//godot::UtilityFunctions::print(engine_name);
+			jolt_backend = true;
+			set_anchor_enabled(anchor_enabled);
+		}
+	}
+	// test
+	jolt_backend = true;
+
+	set_freeze_mode(RigidBody3D::FREEZE_MODE_KINEMATIC);
 	set_process(true);
 	set_angular_damp(0.000001f);
 	set_contact_monitor(true);
-
-	set_freeze_mode(RigidBody3D::FREEZE_MODE_KINEMATIC);
 
 	velocity_inital = get_linear_velocity();
 	
 	if (get_max_contacts_reported() == 0)
 		set_max_contacts_reported(24);
 	set_use_custom_integrator(!bullet_backend);
-
-	Variant engine_name = ProjectSettings::get_singleton()->get("physics/3d/physics_engine");
-	if (engine_name.get_type() == Variant::STRING) {
-		//godot::UtilityFunctions::print(engine_name);
-		if (engine_name == "JoltPhysics3D") {
-			jolt_backend = true;
-		}
-	}
 
 	if (!Engine::get_singleton()->is_editor_hint()) {
 		if (_graph != nullptr) {
@@ -100,7 +101,8 @@ void BakedFracture::update() {
 void BakedFracture::set_anchor_enabled(bool value) {
 	anchor_enabled = value;
 	// TODO: Check up on this
-	if (jolt_backend) {
+	if (true || ProjectSettings::get_singleton()->get("physics/3d/physics_engine") == "JoltPhysics3D") {
+		jolt_backend = true;
 		set_freeze_enabled(value);
 	}
 	else {
@@ -358,7 +360,6 @@ void BakedFracture::detach_shape(int shape_id, Vector3 force) {
 }
 
 void BakedFracture::fracture_subgraph(Array subgraph_nodes) {
-	// Engine.time_scale = 0.05
 	// Build a new baked fractured with the shapes in subgraph
 	BakedFracture* fracture = memnew(BakedFracture);
 
@@ -388,7 +389,7 @@ void BakedFracture::fracture_subgraph(Array subgraph_nodes) {
 	
 	fracture->set_global_transform(get_global_transform());
 	
-	if (bullet_backend) {
+	if (bullet_backend && jolt_backend == false) {
 		Transform3D t = fracture->get_global_transform();
 		t.origin = fracture->to_global(fracture->_graph->centroid());
 		fracture->set_global_transform(t);
@@ -418,6 +419,9 @@ void BakedFracture::fracture_subgraph(Array subgraph_nodes) {
 }
 
 void BakedFracture::recalculate_center_of_mass() {
+	return;
+	// This should not be needed in Godot 4 where CoM is computed automatically
+	/*
 	Array shape_globals;
 	Array shape_owners = get_shape_owners();
 	for (int n = 0; n < shape_owners.size(); n++) {
@@ -440,6 +444,7 @@ void BakedFracture::recalculate_center_of_mass() {
 		Dictionary node = _graph->_nodes[pair[0]];
 		node["position"] = colshape->get_transform().origin;
 	}
+	*/
 }
 
 void BakedFracture::glue_debug_setup() {

@@ -53,6 +53,7 @@ void Ggraph::set_edge_matrix(BitMap* p_edge_matrix) {
 }
 
 Ggraph::Ggraph() {
+	using_edge_matrix = false;
 }
 
 Ggraph::~Ggraph() {
@@ -177,19 +178,25 @@ PackedInt32Array Ggraph::neighbours(int x) {
 	PackedInt32Array n;
 
 	if (using_edge_matrix) {
-		for (int i = 0; i < edge_matrix->get_size().height; i++) {
-			if (edge_matrix->get_bit(x, i) || edge_matrix->get_bit(i, x)) {
-				n.append(i);
+		if (edge_matrix != nullptr) {
+			for (int i = 0; i < edge_matrix->get_size().y; i++) {
+				if (edge_matrix->get_bit(x, i) || edge_matrix->get_bit(i, x)) {
+					n.append(i);
+				}
 			}
+			return n;
 		}
-	} else {
-		for(int i = 0; i < _edges.size(); i++) {
-			Dictionary edge = _edges[i];
-			if (x == (int)edge["a"])
-				n.append((int)edge["b"]);
-			if (x == (int)edge["b"])
-				n.append((int)edge["a"]);
+		else {
+			UtilityFunctions::print("wtf is going on here?");
 		}
+	}
+	
+	for(int i = 0; i < _edges.size(); i++) {
+		Dictionary edge = _edges[i];
+		if (x == (int)edge["a"])
+			n.append((int)edge["b"]);
+		if (x == (int)edge["b"])
+			n.append((int)edge["a"]);
 	}
 	return n;
 }

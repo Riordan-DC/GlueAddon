@@ -53,7 +53,7 @@ static func glue(obj, scene_root, save_path: String="res://addons/glue/graphs/",
 		query.set_shape(shape)
 		query.collision_mask = 0xFFFFFFFFF
 		query.transform = shape_obj.global_transform
-		query.margin = obj.glue_margin + 0.2
+		query.margin = obj.glue_margin# + 0.2
 		query.exclude = [shape_obj]
 		var adj_shapes = space_state.intersect_shape(query, 32)
 		
