@@ -448,70 +448,83 @@ void BakedFracture::recalculate_center_of_mass() {
 }
 
 void BakedFracture::glue_debug_setup() {
-	// _debug_line_mat = SpatialMaterial::_new();
-
-	// _debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_UNSHADED, true);
-	// _debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_DISABLE_DEPTH_TEST, true);
-	// _debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_USE_POINT_SIZE, true);
-	// _debug_line_mat->set_flag(SpatialMaterial::Flags::FLAG_ALBEDO_FROM_VERTEX_COLOR, true);
-
-	// _debug_line_mat->set_albedo(Color(1.0,1.0,1.0,1.0));
-	// _debug_line_mat->set_line_width(4.0);
-	// _debug_line_mat->set_cull_mode(SpatialMaterial::CullMode::CULL_DISABLED);
+	_debug_line_mat = memnew(StandardMaterial3D);
+	_debug_line_mat->set_shading_mode(BaseMaterial3D::SHADING_MODE_UNSHADED);
+	_debug_line_mat->set_flag(BaseMaterial3D::FLAG_DISABLE_DEPTH_TEST, true);
+	_debug_line_mat->set_flag(BaseMaterial3D::FLAG_ALBEDO_FROM_VERTEX_COLOR, true);
+	_debug_line_mat->set_cull_mode(BaseMaterial3D::CULL_DISABLED);
 	
-
-	// _debug_point_mat = SpatialMaterial::_new();
-	// _debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_UNSHADED, true);
-	// _debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_DISABLE_DEPTH_TEST, true);
-	// _debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_USE_POINT_SIZE, true);
-	// _debug_point_mat->set_flag(SpatialMaterial::Flags::FLAG_ALBEDO_FROM_VERTEX_COLOR, true);
-
-	// _debug_point_mat->set_albedo(Color(1.0,1.0,1.0,1.0));
-	// _debug_point_mat->set_point_size(10.0);
-	// _debug_point_mat->set_cull_mode(SpatialMaterial::CullMode::CULL_DISABLED);
+	_debug_point_mat = memnew(StandardMaterial3D);
+	_debug_point_mat->set_shading_mode(BaseMaterial3D::SHADING_MODE_UNSHADED);
+	_debug_point_mat->set_flag(BaseMaterial3D::FLAG_DISABLE_DEPTH_TEST, true);
+	_debug_point_mat->set_flag(BaseMaterial3D::FLAG_ALBEDO_FROM_VERTEX_COLOR, true);
+	_debug_point_mat->set_cull_mode(BaseMaterial3D::CULL_DISABLED);
+	_debug_point_mat->set_flag(BaseMaterial3D::FLAG_USE_POINT_SIZE, true);
+	_debug_point_mat->set_albedo(Color(1.0,1.0,1.0,1.0));
+	_debug_point_mat->set_point_size(10.0);
+	_debug_point_mat->set_cull_mode(BaseMaterial3D::CULL_DISABLED);
 	
+	_debug_drawer = memnew(MeshInstance3D);
+	add_child(_debug_drawer);
+	Ref<ImmediateMesh> mesh = memnew(ImmediateMesh);
+	_debug_drawer->set_mesh(mesh);
 
-	// _debug_drawer = ImmediateGeometry::_new();
-	// add_child(_debug_drawer);
-	// _debug_drawer->clear();
+	_debug_drawer_points = memnew(MeshInstance3D);
+	add_child(_debug_drawer_points);
+	Ref<ImmediateMesh> point_mesh = memnew(ImmediateMesh);
+	_debug_drawer_points->set_mesh(point_mesh);
+
+	//_debug_drawer->set_material_override(_debug_line_mat);
 }
 
 void BakedFracture::glue_debug_draw() {
-	// if (!Engine::get_singleton()->is_editor_hint() && glue_debug_graph && _graph != nullptr) {
-	// 	_debug_drawer->clear();
-	// 	//_debug_drawer->set_material_override(_debug_line_mat);
+	if (!Engine::get_singleton()->is_editor_hint() && glue_debug_graph && _graph != nullptr) {
+		{
+			// Draw edges
+			Ref<ImmediateMesh> im = _debug_drawer->get_mesh();
+			if (im != nullptr) {
+				im->clear_surfaces();
+				for (int i = 0; i < _graph->_edges.size(); i++) {
+					Dictionary x = _graph->_edges[i];
+					Dictionary node1 = _graph->_nodes[x["a"]];
+					Dictionary node2 = _graph->_nodes[x["b"]];
+					im->surface_begin(Mesh::PrimitiveType::PRIMITIVE_LINES, _debug_line_mat);
+					im->surface_set_color(Color(1.0, 1.0, 1.0, 1.0));
+					im->surface_add_vertex(node1["position"]);
+					im->surface_add_vertex(node2["position"]);
+					im->surface_end();
+				}
+			}
+		}
 		
-	// 	// Draw edges
-	// 	for (int i = 0; i < _graph->_edges.size(); i++) {
-	// 		Dictionary x = _graph->_edges[i];
-	// 		_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_LINE_STRIP);
-	// 		_debug_drawer->set_color(Color(1.0,1.0,1.0,1.0));
-	// 		Dictionary node1 = _graph->_nodes[x["a"]];
-	// 		Dictionary node2 = _graph->_nodes[x["b"]];
-	// 		_debug_drawer->add_vertex(node1["position"]);
-	// 		_debug_drawer->add_vertex(node2["position"]);
-	// 		_debug_drawer->end();
-	// 	}
-		
-	// 	_debug_drawer->set_material_override(_debug_point_mat);
-	// 	// Draw nodes
-	// 	Array keys = _graph->_nodes.keys();
-	// 	for (int x = 0; x < keys.size(); x++) {
-	// 		Dictionary n = _graph->_nodes[keys[x]];
-	// 		_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_POINTS);
-	// 		if (n["anchor"]) {
-	// 			_debug_drawer->set_color(Color(0,0,1));
-	// 		} else {
-	// 			if (((Vector3)n["force"]).length() > 0) {
-	// 				_debug_drawer->set_color(Color(1,0,0));
-	// 			} else {
-	// 				_debug_drawer->set_color(Color(0,1,0));
-	// 			}
-	// 		}
-	// 		_debug_drawer->add_vertex(n["position"]);
-	// 		_debug_drawer->end();
-	// 	}
-		
+		{
+			// Draw nodes
+			Ref<ImmediateMesh> im = _debug_drawer_points->get_mesh();
+			if (im != nullptr) {
+				im->clear_surfaces();
+				Array keys = _graph->_nodes.keys();
+				for (int x = 0; x < keys.size(); x++) {
+					Variant key = keys[x];
+					Dictionary n = _graph->_nodes[key];
+					im->surface_begin(Mesh::PrimitiveType::PRIMITIVE_POINTS, _debug_point_mat);
+					im->surface_add_vertex(n["position"]);
+					if (n["anchor"]) {
+						im->surface_set_color(Color(0, 0, 1));
+					}
+					else {
+						if (((Vector3)n["force"]).length() > 0) {
+							im->surface_set_color(Color(1, 0, 0));
+						}
+						else {
+							im->surface_set_color(Color(0, 1, 0));
+						}
+					}
+					im->surface_end();
+				}
+			}
+		}
+	}
+	
 	// 	if (bullet_backend) {
 	// 		// draw center of mass
 	// 		_debug_drawer->begin(Mesh::PrimitiveType::PRIMITIVE_POINTS);
@@ -521,8 +534,6 @@ void BakedFracture::glue_debug_draw() {
 	// 	}
 	// }
 }
-
-//void glue();
 
 void BakedFracture::set_graph(Ref<Ggraph> graph) {
 	//ResourceLoader* loader = ResourceLoader::get_singleton();

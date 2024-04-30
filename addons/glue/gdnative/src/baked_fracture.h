@@ -10,6 +10,7 @@
 #include <godot_cpp/classes/immediate_mesh.hpp>
 #include <godot_cpp/classes/texture.hpp>
 #include <godot_cpp/classes/mesh.hpp>
+#include <godot_cpp/classes/orm_material3d.hpp>
 #include <godot_cpp/classes/standard_material3d.hpp>
 #include <godot_cpp/classes/physics_direct_body_state3d.hpp>
 #include <godot_cpp/variant/vector3.hpp>
@@ -22,6 +23,7 @@
 #include <godot_cpp/classes/os.hpp>
 #include <godot_cpp/classes/gd_script.hpp>
 #include <godot_cpp/classes/project_settings.hpp>
+#include <godot_cpp/classes/mesh_instance3d.hpp>
 
 using namespace godot;
 
@@ -32,7 +34,8 @@ protected:
     static void _bind_methods();
 
 private:
-    ImmediateMesh* _debug_drawer;
+    MeshInstance3D* _debug_drawer;
+    MeshInstance3D* _debug_drawer_points;
     StandardMaterial3D* _debug_line_mat;
     StandardMaterial3D* _debug_point_mat;
 

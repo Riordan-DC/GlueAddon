@@ -16,21 +16,21 @@ colors = PackedColorArray(0, 0, 0, 1, 0.972168, 0.151901, 0.151901, 1)
 [sub_resource type="GradientTexture1D" id="257"]
 gradient = SubResource("256")
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_i3b46"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xgm2g"]
 
 [sub_resource type="Sky" id="Sky_5cq73"]
-sky_material = SubResource("PanoramaSkyMaterial_i3b46")
+sky_material = SubResource("ProceduralSkyMaterial_xgm2g")
 
 [sub_resource type="Environment" id="162"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.306923, 0.306923, 0.306923, 1)
 sky = SubResource("Sky_5cq73")
-ambient_light_color = Color(0.340339, 0.340339, 0.340339, 1)
+ambient_light_energy = 0.0
 tonemap_mode = 2
+ssil_enabled = true
 glow_enabled = true
 glow_levels/1 = 1.0
-glow_levels/7 = 1.0
-glow_bloom = 0.05
+glow_bloom = 0.3
 glow_blend_mode = 1
 adjustment_color_correction = SubResource("257")
 
@@ -58,11 +58,10 @@ spot_angle = 44.4398
 environment = SubResource("162")
 
 [node name="DirectionalLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.528438, 0.665444, -0.527198, -1.67685e-08, 0.620984, 0.783823, 0.848972, 0.414202, -0.328152, 0, 14.4675, 0)
+transform = Transform3D(-0.528438, 0.665444, -0.527198, -3.25172e-08, 0.620984, 0.783823, 0.848972, 0.414202, -0.328151, 0, 4, 0)
 light_energy = 0.3
 light_bake_mode = 0
 shadow_enabled = true
-shadow_blur = 1.03
 directional_shadow_mode = 0
 directional_shadow_split_2 = 0.258
 directional_shadow_max_distance = 20.0

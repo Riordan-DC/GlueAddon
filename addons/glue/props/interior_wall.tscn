@@ -1,6 +1,8 @@
-[gd_scene load_steps=66 format=3 uid="uid://uogxfey0t03a"]
+[gd_scene load_steps=67 format=3 uid="uid://uogxfey0t03a"]
 
 [ext_resource type="Script" path="res://addons/glue/props/InteriorWall.gd" id="3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn4g0"]
 
 [sub_resource type="ArrayMesh" id="1"]
 resource_name = "demo_fractured_2_Cube001"
@@ -10,6 +12,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 36,
 "index_data": PackedByteArray(0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0),
+"material": SubResource("StandardMaterial3D_tn4g0"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
@@ -1013,6 +1016,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.857697, 1.27208, -0.025)
 shape = SubResource("36")
 
 [node name="InteriorWall_cell" type="MeshInstance3D" parent="InteriorWall/CollisionShape"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("4")
 
 [node name="CollisionShape2" type="CollisionShape3D" parent="InteriorWall"]
@@ -1020,6 +1024,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.177028, 1.60995, -0.025)
 shape = SubResource("37")
 
 [node name="InteriorWall_cell001" type="MeshInstance3D" parent="InteriorWall/CollisionShape2"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("5")
 
 [node name="CollisionShape3" type="CollisionShape3D" parent="InteriorWall"]
@@ -1027,6 +1032,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.490016, 1.03758, -0.0249191
 shape = SubResource("38")
 
 [node name="InteriorWall_cell002" type="MeshInstance3D" parent="InteriorWall/CollisionShape3"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("6")
 
 [node name="CollisionShape4" type="CollisionShape3D" parent="InteriorWall"]
@@ -1034,6 +1040,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.81274, 0.160896, -0.0254777
 shape = SubResource("39")
 
 [node name="InteriorWall_cell003" type="MeshInstance3D" parent="InteriorWall/CollisionShape4"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("7")
 
 [node name="CollisionShape5" type="CollisionShape3D" parent="InteriorWall"]
@@ -1041,6 +1048,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.945206, 1.93007, -0.021742
 shape = SubResource("40")
 
 [node name="InteriorWall_cell004" type="MeshInstance3D" parent="InteriorWall/CollisionShape5"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("8")
 
 [node name="CollisionShape6" type="CollisionShape3D" parent="InteriorWall"]
@@ -1048,6 +1056,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.476193, 0.190638, -0.02352
 shape = SubResource("41")
 
 [node name="InteriorWall_cell005" type="MeshInstance3D" parent="InteriorWall/CollisionShape6"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("9")
 
 [node name="CollisionShape7" type="CollisionShape3D" parent="InteriorWall"]
@@ -1055,6 +1064,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111574, 1.26978, -0.027027
 shape = SubResource("42")
 
 [node name="InteriorWall_cell006" type="MeshInstance3D" parent="InteriorWall/CollisionShape7"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("10")
 
 [node name="CollisionShape8" type="CollisionShape3D" parent="InteriorWall"]
@@ -1062,6 +1072,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.665569, 2.01391, -0.029499
 shape = SubResource("43")
 
 [node name="InteriorWall_cell007" type="MeshInstance3D" parent="InteriorWall/CollisionShape8"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("11")
 
 [node name="CollisionShape9" type="CollisionShape3D" parent="InteriorWall"]
@@ -1069,6 +1080,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.988255, 2.0716, -0.025)
 shape = SubResource("44")
 
 [node name="InteriorWall_cell008" type="MeshInstance3D" parent="InteriorWall/CollisionShape9"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("12")
 
 [node name="CollisionShape10" type="CollisionShape3D" parent="InteriorWall"]
@@ -1076,6 +1088,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795946, 1.34293, -0.027476
 shape = SubResource("45")
 
 [node name="InteriorWall_cell009" type="MeshInstance3D" parent="InteriorWall/CollisionShape10"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("13")
 
 [node name="CollisionShape11" type="CollisionShape3D" parent="InteriorWall"]
@@ -1083,6 +1096,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.717729, 0.641095, -0.02452
 shape = SubResource("46")
 
 [node name="InteriorWall_cell011" type="MeshInstance3D" parent="InteriorWall/CollisionShape11"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("14")
 
 [node name="CollisionShape12" type="CollisionShape3D" parent="InteriorWall"]
@@ -1090,6 +1104,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.843115, 0.52375, -0.0262858
 shape = SubResource("47")
 
 [node name="InteriorWall_cell012" type="MeshInstance3D" parent="InteriorWall/CollisionShape12"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("15")
 
 [node name="CollisionShape13" type="CollisionShape3D" parent="InteriorWall"]
@@ -1097,6 +1112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.358485, 0.630539, -0.04487
 shape = SubResource("48")
 
 [node name="InteriorWall_cell013" type="MeshInstance3D" parent="InteriorWall/CollisionShape13"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("16")
 
 [node name="CollisionShape14" type="CollisionShape3D" parent="InteriorWall"]
@@ -1104,6 +1120,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.850072, 0.865659, -0.025)
 shape = SubResource("49")
 
 [node name="InteriorWall_cell014" type="MeshInstance3D" parent="InteriorWall/CollisionShape14"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("17")
 
 [node name="CollisionShape15" type="CollisionShape3D" parent="InteriorWall"]
@@ -1111,6 +1128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.700442, 2.24828, -0.022018
 shape = SubResource("50")
 
 [node name="InteriorWall_cell015" type="MeshInstance3D" parent="InteriorWall/CollisionShape15"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("18")
 
 [node name="CollisionShape16" type="CollisionShape3D" parent="InteriorWall"]
@@ -1118,6 +1136,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173392, 0.100982, -0.026955
 shape = SubResource("51")
 
 [node name="InteriorWall_cell016" type="MeshInstance3D" parent="InteriorWall/CollisionShape16"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("19")
 
 [node name="CollisionShape17" type="CollisionShape3D" parent="InteriorWall"]
@@ -1125,6 +1144,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.496403, 2.03638, -0.0264706
 shape = SubResource("52")
 
 [node name="InteriorWall_cell017" type="MeshInstance3D" parent="InteriorWall/CollisionShape17"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("20")
 
 [node name="CollisionShape18" type="CollisionShape3D" parent="InteriorWall"]
@@ -1132,6 +1152,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.926955, 0.376146, -0.02285
 shape = SubResource("53")
 
 [node name="InteriorWall_cell018" type="MeshInstance3D" parent="InteriorWall/CollisionShape18"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("21")
 
 [node name="CollisionShape19" type="CollisionShape3D" parent="InteriorWall"]
@@ -1139,6 +1160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586763, 1.7772, -0.0239798
 shape = SubResource("54")
 
 [node name="InteriorWall_cell020" type="MeshInstance3D" parent="InteriorWall/CollisionShape19"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("22")
 
 [node name="CollisionShape20" type="CollisionShape3D" parent="InteriorWall"]
@@ -1146,6 +1168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.686809, 1.50624, -0.025)
 shape = SubResource("55")
 
 [node name="InteriorWall_cell021" type="MeshInstance3D" parent="InteriorWall/CollisionShape20"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("23")
 
 [node name="CollisionShape21" type="CollisionShape3D" parent="InteriorWall"]
@@ -1153,6 +1176,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.207464, 0.495091, -0.02612
 shape = SubResource("56")
 
 [node name="InteriorWall_cell022" type="MeshInstance3D" parent="InteriorWall/CollisionShape21"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("24")
 
 [node name="CollisionShape22" type="CollisionShape3D" parent="InteriorWall"]
@@ -1160,6 +1184,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199075, 0.823126, -0.02758
 shape = SubResource("57")
 
 [node name="InteriorWall_cell023" type="MeshInstance3D" parent="InteriorWall/CollisionShape22"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("25")
 
 [node name="CollisionShape23" type="CollisionShape3D" parent="InteriorWall"]
@@ -1167,6 +1192,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89172, 0.956854, -0.020949
 shape = SubResource("58")
 
 [node name="InteriorWall_cell024" type="MeshInstance3D" parent="InteriorWall/CollisionShape23"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("26")
 
 [node name="CollisionShape24" type="CollisionShape3D" parent="InteriorWall"]
@@ -1174,6 +1200,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253316, 1.8631, -0.025)
 shape = SubResource("59")
 
 [node name="InteriorWall_cell025" type="MeshInstance3D" parent="InteriorWall/CollisionShape24"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("27")
 
 [node name="CollisionShape25" type="CollisionShape3D" parent="InteriorWall"]
@@ -1181,6 +1208,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.480222, 0.442519, -0.023586
 shape = SubResource("60")
 
 [node name="InteriorWall_cell026" type="MeshInstance3D" parent="InteriorWall/CollisionShape25"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("28")
 
 [node name="CollisionShape26" type="CollisionShape3D" parent="InteriorWall"]
@@ -1188,6 +1216,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.460705, 0.868053, -0.02471
 shape = SubResource("61")
 
 [node name="InteriorWall_cell028" type="MeshInstance3D" parent="InteriorWall/CollisionShape26"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("29")
 
 [node name="CollisionShape27" type="CollisionShape3D" parent="InteriorWall"]
@@ -1195,6 +1224,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09051, 1.09536, -0.025)
 shape = SubResource("62")
 
 [node name="InteriorWall_cell029" type="MeshInstance3D" parent="InteriorWall/CollisionShape27"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("30")
 
 [node name="CollisionShape28" type="CollisionShape3D" parent="InteriorWall"]
@@ -1202,6 +1232,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181672, 0.78516, -0.0249449
 shape = SubResource("63")
 
 [node name="InteriorWall_cell030" type="MeshInstance3D" parent="InteriorWall/CollisionShape28"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("31")
 
 [node name="CollisionShape29" type="CollisionShape3D" parent="InteriorWall"]
@@ -1209,6 +1240,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.371265, 2.20772, -0.025335
 shape = SubResource("64")
 
 [node name="InteriorWall_cell031" type="MeshInstance3D" parent="InteriorWall/CollisionShape29"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("32")
 
 [node name="CollisionShape30" type="CollisionShape3D" parent="InteriorWall"]
@@ -1216,6 +1248,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243245, 1.22353, -0.0250001
 shape = SubResource("65")
 
 [node name="InteriorWall_cell032" type="MeshInstance3D" parent="InteriorWall/CollisionShape30"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("33")
 
 [node name="CollisionShape31" type="CollisionShape3D" parent="InteriorWall"]
@@ -1223,4 +1256,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0239934, 2.15421, -0.025)
 shape = SubResource("66")
 
 [node name="InteriorWall_cell033" type="MeshInstance3D" parent="InteriorWall/CollisionShape31"]
+material_override = SubResource("StandardMaterial3D_tn4g0")
 mesh = SubResource("34")
