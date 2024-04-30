@@ -1,41 +1,39 @@
-# Destruction for Godot 4
+# Glue for Godot 4
+Glue is a Godot 4.x addon for simulated pre-fractured structural destruction. This branch only works with Godot >= 4.2, earlier versions may not work. <br>
+For a 3.x version, use master branch. Note: 3.x requires Bullet Physics engine to function.
 
-Destruction is a Godot 4.x addon for simulated pre-fractured structural destruction. This branch only works with Godot >= 4.2, earlier versions may not work. <br>
-
-### Features:
+## Features:
 * Uses GDExtension and C++ to support ~300 node structures
 * Anchor points
 * Small readable codebase
 * Tested with Jolt physics and Godot's physics. <br>
 
 
-
-(feed me pls) <br>
-[Twitter](https://twitter.com/RiordanCallil) <br>
+## Author
+Glue is developed and maintained by [Riordan Callil](https://twitter.com/RiordanCallil)<br>
 [Ko-Fi](https://ko-fi.com/upakai)
 <br>
 <br>
-I made this short video to explain the inspiration for this addon and how it was made. If you want to know more, read the code, it is quite a small codebase.
+
+## Video
+I made this short video to explain the inspiration for this addon and how it was made. If you want to know more, read the code, the codebase is small.
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/mpDvrJ0uqWQ/0.jpg)](https://youtu.be/mpDvrJ0uqWQ)
-
-
-
 
 -------
 
 
 
-### Future:
+## Future:
 * Perform fracturing on a thread to remove lag and scale to larger graphs
 
-### Installing
+## Installing
 Downloading this repo and copy the ```addons/glue``` folder into your Godot 4.x project ```addons``` folder. Enabled in your project settings and use.
 
-### Building
+## Building
 This addon comes with libraries for windows using the Godot 4.x master branch API. If you need to build your own follow the guide found inside the ```glue/``` directory.
 
-### Testing
+## Testing
 I've added the glue_test.tscn to the scenes/ folder. I used this scene to make the YT vid, plus a massive wall which shows the current limits of the system.
 <br>The controls are:
 <br>W,A,S,D = fly around
