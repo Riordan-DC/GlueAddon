@@ -1,4 +1,4 @@
-# Destruction Addon for Godot 4
+# Destruction for Godot 4
 
 Destruction is a Godot 4.x addon for simulated pre-fractured structural destruction. This branch only works with Godot >= 4.2, earlier versions may not work. <br>
 
