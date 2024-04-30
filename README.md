@@ -1,11 +1,18 @@
-# Riordan's Destruction Addon
-Author: Riordan (Upakai) <br>
+# Destruction Addon for Godot 4
+
+Destruction is a Godot 4.x addon for simulated pre-fractured structural destruction. This branch only works with Godot >= 4.2, earlier versions may not work. <br>
+
+### Features:
+* Uses GDExtension and C++ to support ~300 node structures
+* Anchor points
+* Small readable codebase
+* Tested with Jolt physics and Godot's physics. <br>
+
+
+
+(feed me pls) <br>
 [Twitter](https://twitter.com/RiordanCallil) <br>
 [Ko-Fi](https://ko-fi.com/upakai)
-
-This is a Godot 4.x addon for simulated pre-fractured structural destruction. <br>
-This branch only works with Godot >= 4.2, earlier versions may not work. <br>
-Tested with Jolt physics and Godot's physics. <br>
 <br>
 <br>
 I made this short video to explain the inspiration for this addon and how it was made. If you want to know more, read the code, it is quite a small codebase.
@@ -13,12 +20,11 @@ I made this short video to explain the inspiration for this addon and how it was
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/mpDvrJ0uqWQ/0.jpg)](https://youtu.be/mpDvrJ0uqWQ)
 
 
+
+
 -------
 
-### Features:
-* Performant code up to ~300 node structures
-* Anchor points
-* Small readable codebase
+
 
 ### Future:
 * Perform fracturing on a thread to remove lag and scale to larger graphs
