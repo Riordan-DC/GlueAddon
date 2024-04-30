@@ -3,10 +3,14 @@ Author: Riordan (Upakai)
 [Twitter](https://twitter.com/RiordanCallil)
 [Ko-Fi](https://ko-fi.com/upakai)
 
-This is a Godot 4.x addon for simulated pre-fractured structural destruction.
+This is a Godot 4.x addon for simulated pre-fractured structural destruction. <br>
+This branch is made to work with Godot 4.2.2. Earlier versions may not work. <br>
+Tested with Jolt physics and Godot's physics. <br>
+<br>
+<br>
+I made this short video to explain the inspiration for this addon and how it was made. If you want to know more, read the code, it is quite a small codebase.
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/mpDvrJ0uqWQ/0.jpg)](https://youtu.be/mpDvrJ0uqWQ)
-
 
 
 -------
