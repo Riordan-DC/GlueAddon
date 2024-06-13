@@ -28,11 +28,12 @@ This addon comes with libraries for windows using the Godot 3.x master branch AP
 
 I've added the glue_test.tscn to the scenes/ folder. I used this scene to make the YT vid, plus a massive wall which shows the current limits of the system.
 The controls are:
-W,A,S,D = fly around
-Left mouse button = Detach shape from body
-Right mouse button = Launch grenade
-R = Restart scene
-Enter = Toggle slow motion
+
+* W,A,S,D = fly around
+* Left mouse button = Detach shape from body
+* Right mouse button = Launch grenade
+* R = Restart scene
+* Enter = Toggle slow motion
 
 ### Issues
 
