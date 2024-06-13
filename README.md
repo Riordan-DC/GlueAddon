@@ -1,9 +1,5 @@
 # GlueAddon
 
-Author: Riordan (Upakai)
-[Twitter](https://twitter.com/RiordanCallil)
-[Ko-Fi](https://ko-fi.com/upakai)
-
 This is a Godot 3.x addon for simulated pre-fractured structural destruction.
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/z3tJwcHUo0o/0.jpg)](https://www.youtube.com/watch?v=z3tJwcHUo0o)
@@ -41,3 +37,7 @@ I've added the glue_test.tscn to the scenes/ folder. I used this scene to make t
 ### Issues
 
 * After you glue and produce a graph resource it must be saved to disk. A graph resource saved inside the scene seems to break stuff.
+
+## Author
+Glue is developed and maintained by [Riordan Callil](https://twitter.com/RiordanCallil)
+[Ko-Fi](https://ko-fi.com/upakai)
