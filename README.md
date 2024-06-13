@@ -9,12 +9,6 @@ For a 3.x version, use master branch. Note: 3.x requires Bullet Physics engine t
 * Tested with Jolt physics and Godot's physics. <br>
 
 
-## Author
-Glue is developed and maintained by [Riordan Callil](https://twitter.com/RiordanCallil)<br>
-[Ko-Fi](https://ko-fi.com/upakai)
-<br>
-<br>
-
 ## Video
 I made this short video to explain the inspiration for this addon and how it was made. If you want to know more, read the code, the codebase is small.
 
@@ -46,3 +40,7 @@ I've added the glue_test.tscn to the scenes/ folder. I used this scene to make t
 
 ## TODO
 - Refactor CPP to consider bullet_backend and jolt backend. There are slight differences. 
+
+## Author
+Glue is developed and maintained by [Riordan Callil](https://twitter.com/RiordanCallil)
+[Ko-Fi](https://ko-fi.com/upakai)
