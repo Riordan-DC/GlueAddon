@@ -27,17 +27,18 @@ This addon comes with libraries for windows using the Godot 3.x master branch AP
 ### Testing
 
 I've added the glue_test.tscn to the scenes/ folder. I used this scene to make the YT vid, plus a massive wall which shows the current limits of the system.
-`<br>`The controls are:
-`<br>`W,A,S,D = fly around
-`<br>`Left mouse button = Detach shape from body
-`<br>`Right mouse button = Launch grenade
-`<br>`R = Restart scene
-`<br>`Enter = Toggle slow motion
+The controls are:
+W,A,S,D = fly around
+Left mouse button = Detach shape from body
+Right mouse button = Launch grenade
+R = Restart scene
+Enter = Toggle slow motion
 
 ### Issues
 
 * After you glue and produce a graph resource it must be saved to disk. A graph resource saved inside the scene seems to break stuff.
 
 ## Author
+
 Glue is developed and maintained by [Riordan Callil](https://twitter.com/RiordanCallil)
 [Ko-Fi](https://ko-fi.com/upakai)
