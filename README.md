@@ -18,8 +18,7 @@ Glue is developed and maintained by [Riordan Callil](https://twitter.com/Riordan
 ## Video
 I made this short video to explain the inspiration for this addon and how it was made. If you want to know more, read the code, the codebase is small.
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/mpDvrJ0uqWQ/0.jpg)](https://youtu.be/mpDvrJ0uqWQ)
-
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/z3tJwcHUo0o/0.jpg)](https://www.youtube.com/watch?v=z3tJwcHUo0o)
 -------
 
 
@@ -41,6 +40,9 @@ I've added the glue_test.tscn to the scenes/ folder. I used this scene to make t
 <br>Right mouse button = Launch grenade
 <br>R = Restart scene
 <br>Enter = Toggle slow motion
+
+## Issues
+* After you glue and produce a graph resource it must be saved to disk. A graph resource saved inside the scene seems to break stuff.
 
 ## TODO
 - Refactor CPP to consider bullet_backend and jolt backend. There are slight differences. 
