@@ -55,7 +55,13 @@ func _get_handle_name(_index, _secondary):
 func _get_handle_value(index, _secondary):
 	return index
 
-func _commit_handle(index: int, _secondary, restore, cancel: bool=false):
+#func _commit_handle(index: int, _secondary, restore, cancel: bool=false):
+#	var node = get_node_3d()
+#	if node._graph != null:
+#		node._graph._nodes[index].anchor = !node._graph._nodes[index].anchor
+		#print("HANDLE UPDATE GRAPH NODE AT INDEX: %d [ANCHOR = %s]" % [index, node._graph._nodes[index].anchor])
+
+func _begin_handle_action(index, _secondary):
 	var node = get_node_3d()
 	if node._graph != null:
 		node._graph._nodes[index].anchor = !node._graph._nodes[index].anchor
